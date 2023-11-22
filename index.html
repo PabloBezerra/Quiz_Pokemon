@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Pokemon</title>
+    <link rel="stylesheet" href="styles/style.min.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <main>
+        <section class="lobby">
+
+            <p>Welcome to Quiz</p>
+
+            <img src="/image/pokemon.png" alt="pokemon">
+
+            <p>Whats your Nickname?</p>
+
+            <form class="formNickname">
+                <input type="text" name="Nickname" id="i-Nickname" minlength="3" autocomplete="nickname" 
+                required>
+                <input type="submit" value="Start!"> 
+            </form>
+
+        </section>
+        <section class="area">
+
+            <div class="screen">
+
+            </div>
+
+            <div class="questions">
+                <div question="1"></div>
+                <div question="2"></div>
+                <div question="3"></div>
+                <div question="4"></div>
+            </div>
+
+        </section>
+        <section class="result">
+
+        </section>
+    </main>
+</body>
+</html>

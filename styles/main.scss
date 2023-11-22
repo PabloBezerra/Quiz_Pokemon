@@ -1,0 +1,109 @@
+// IMPORTS
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Passion+One:wght@400;700&family=Space+Grotesk:wght@300;500&display=swap');
+
+//VARIABLES
+
+$font:'Passion One', arial, sans-serif;
+$dark-blue: #01326D;
+$light-blue: #0073BC;
+$yellow: #FFCC00;
+//RESET GENERAL
+*{
+    padding: 0;
+    margin: 0;
+    font-family: $font;
+    box-sizing: border-box;
+    transition: all ease-in-out .8s;
+}
+
+body, html{
+    width: 100vw;
+    height: 100vh;
+    background: rgb(6, 71, 6) url(../image/pokeball.png);
+    ::-webkit-scrollbar{display: none;}
+    ::-webkit-scrollbar-thumb{display: none;}
+}
+
+main{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.678);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    section.lobby{
+        width: 90%;
+        height: 0;
+        background: linear-gradient($dark-blue, $light-blue, $yellow);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:space-around;
+        border-radius: 20px;
+        overflow: hidden;
+        position: absolute;
+
+        p{
+            color: $yellow;
+            font-size: 40px;
+            text-align: center;
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.397);
+        }
+
+        img{
+            width: 250px;
+        }
+
+        form.formNickname{
+            width: 100%;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+            input[type='text']{
+                width: 250px;
+                height: 40px;
+                color: $yellow;
+                border: none;
+                border-radius: 10px;
+                box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.486);
+                padding: 5px;
+                font-size: 20px;
+                text-align: center;
+                background-color: $dark-blue;
+            }
+
+            input[type='submit']{
+                width: 250px;
+                height: 40px;
+                background-color: $yellow;
+                color: $dark-blue;
+                border: none;
+                border-radius: 10px;
+                font-size: 20px;
+                box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.486);
+
+                &:hover{
+                    background: $dark-blue;
+                    color: $yellow;
+                }
+            }
+        }
+    }
+}
+
+@keyframes exit{
+    10%{right: 10vw;}
+    20%{right: 20vw;}
+    30%{right: 20vw;}
+    40%{right: 10vw;}
+    60%{left: 10vw;}
+    80%{left: 50vw;}
+    100%{left: 100vw;}
+}
