@@ -1,0 +1,170 @@
+[
+    {
+        "questao": "Como se chama a palava no qual a sua escrita da direita para a esquerda e da esquerda para direita é a mesma coisa? Ex.: 'ovo', 'arara' 'esse'",
+        "1": "Palíndromo",
+        "2": "Assicrono",
+        "3": "Polisílaba",
+        "4": "Sinonimo",
+        "correto": "1"
+    },
+    {
+        "questao": "Qual é a capital do Japão?",
+        "1": "Pequim",
+        "2": "Seul",
+        "3": "Tóquio",
+        "4": "Bangcoc",
+        "correto": "1"
+    },
+    {   
+        "questao": "Quem escreveu a peça de teatro 'Romeu e Julieta'?",
+        "1": "Charles Dickens",
+        "2": "Jane Austen",
+        "3": "William Shakespeare",
+        "4": "Fyodor Dostoevsky",
+        "correto": "3"
+    },
+    {   
+        "questao": "Qual é o maior oceano do mundo?",
+        "1": "Atlântico",
+        "2": "Índico",
+        "3": "Ártico",
+        "4": "Pacífico",
+        "correto": "4"
+    },
+    {   
+        "questao": "Quem foi o primeiro presidente do Brasil?",
+        "1": "Getúlio Vargas",
+        "2": "Marechal Deodoro da Fonseca",
+        "3": "Juscelino Kubitschek",
+        "4": "Tancredo Neves",
+        "correto": "2"
+    },
+    {   
+        "questao": "Qual é o símbolo químico do ouro?",
+        "1": "Au",
+        "2": "Ag",
+        "3": "Fe",
+        "4": "Cu",
+        "correto": "1"
+    },
+    {   
+        "questao": "Quem foi o líder do movimento pelos direitos civis nos Estados Unidos, famoso por seu discurso 'Eu Tenho um Sonho'?",
+        "1": "Malcolm X",
+        "2": "Martin Luther King Jr.",
+        "3": "Nelson Mandela",
+        "4": "Rosa Parks",
+        "correto": "2"
+    },
+    {   
+        "questao": "Qual é o maior planeta do sistema solar?",
+        "1": "Marte",
+        "2": "Júpiter",
+        "3": "Saturno",
+        "4": "Netuno",
+        "correto": "2"
+    },
+    {   
+        "questao": "Quem pintou a Mona Lisa?",
+        "1": "Michelangelo",
+        "2": "Vincent van Gogh",
+        "3": "Leonardo da Vinci",
+        "4": "Pablo Picasso",
+        "correto": "3"
+    },
+    {   
+        "questao": "Em que ano a Primeira Guerra Mundial começou?",
+        "1": "1905",
+        "2": "1914",
+        "3": "1920",
+        "4": "1939",
+        "correto": "2"
+    },
+    {   
+        "questao": "Qual é o país mais populoso do mundo?",
+        "1": "Rússia",
+        "2": "China",
+        "3": "Índia",
+        "4": "Estados Unidos",
+        "correto": "3"
+    },
+    {   
+        "questao": "Quem foi o cientista que formulou a teoria da relatividade?",
+        "1": "Isaac Newton",
+        "2": "Albert Einstein",
+        "3": "Stephen Hawking",
+        "4": "Galileu Galilei",
+        "correto": "2"
+    },
+    {   
+        "questao": "Qual é a camada mais externa da Terra?",
+        "1": "Núcleo",
+        "2": "Manto",
+        "3": "Crosta",
+        "4": "Núcleo Externo",
+        "correto": "3"
+    },
+    {   
+        "questao": "Quem foi o primeiro homem a pisar na lua?",
+        "1": "Neil Armstrong",
+        "2": "Buzz Aldrin",
+        "3": "Yuri Gagarin",
+        "4": "Alan Shepard",
+        "correto": "1"
+    },
+    {   
+        "questao": "Qual é o segundo maior continente do mundo em área?",
+        "1": "América do Sul",
+        "2": "Europa",
+        "3": "América do Norte",
+        "4": "África",
+        "correto": "4"
+    },
+    {   
+        "questao": "Qual é o rio mais longo do mundo?",
+        "1": "Nilo",
+        "2": "Amazonas",
+        "3": "Yangtzé",
+        "4": "Mississipi",
+        "correto": "1"
+    },
+    {
+        "questao": "Quem foi o fundador da Microsoft?",
+        "1": "Steve Jobs",
+        "2": "Bill Gates",
+        "3": "Mark Zuckerberg",
+        "4": "Larry Page",
+        "correto":"2"
+    },
+    {
+        "questao": "Qual é o maior deserto do mundo em área total?",
+        "1": "Saara",
+        "2": "Atacama",
+        "3": "Antártica",
+        "4": "Deserto do Gobi",
+        "correto":"3"
+    },
+    {
+        "questao": "Quem escreveu 'Dom Quixote', considerado um dos primeiros romances modernos?",
+        "1": "Gustave Flaubert",
+        "2": "Jane Austen",
+        "3": "Fyodor Dostoevsky",
+        "4": "Miguel de Cervantes",
+        "correto":"4"
+    },
+    {
+        "questao": "Em que ano a Segunda Guerra Mundial terminou?",
+        "1": "1945",
+        "2": "1939",
+        "3": "1941",
+        "4": "1950",
+        "correto":"1"
+    },
+    {
+        "questao": "",
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "correto":""
+    }
+]

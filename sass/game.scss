@@ -1,0 +1,105 @@
+section.game{
+    width: 90%;
+    height: 90%;
+    border: 2px solid $bege;
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+
+    div.info{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-self: flex-end;
+        color: $bege;
+        padding: 10px;
+
+        .timer{
+            font-size: 30px;
+        }
+
+        span{
+            font-size: 30px;
+        }
+
+        p.jogador{
+            font-size: 30px;
+        }
+    }
+    
+    div.screen{
+        height: 250px;
+        width: 90%;
+        border: 1px solid $bege;
+        align-self: center;
+        border-radius: 20px;
+        padding: 10px;
+
+        p.titulo{
+            color: $bege;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        p.pergunta{
+            color: $bege;
+            text-align: center;
+            margin-top: 50px;
+            font-size: 20px;
+        }
+    }
+
+    div.questoes{
+        width: 100%;
+        height: 250px;
+        background-color: $bege-esc;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        button{
+            width: 90%;
+            height: 40px;
+            border: none;
+            border-radius: 20px;
+            background-color: $cinza;
+            color: $bege;
+            font-size: 20px;
+            cursor: pointer;
+
+            &.selecionado{
+                background-color: $concreto;
+                color: $cinza;
+            }
+
+            &.correto{
+                background-color: darkgreen;
+                color: $bege;
+            }
+
+            &.errado{
+                background-color: darkred;
+                color: $bege;
+            }
+        }
+    }
+
+    button.verificador{
+        display: flex;
+        align-self: center;
+        width: 200px;
+        height: 30px;
+        border-radius: 20px;
+        border: 2px solid $concreto;
+        justify-content: center;
+        color: $concreto;
+        background-color: $cinza;
+        font-size: 20px;
+        margin-bottom: 10px;
+        opacity: 0;
+        cursor: pointer;
+    }
+}

@@ -1,41 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Pokemon</title>
     <link rel="stylesheet" href="styles/style.min.css">
-    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script defer src="js/app.js" type="module"></script>
 </head>
 <body>
     <main>
         <section class="lobby">
 
-            <p>Welcome to Quiz</p>
+            <p>Bem vindo ao quiz</p>
 
-            <img src="/image/pokemon.png" alt="pokemon">
+            <p>Onde o seu conhecimento seu é posto a prova!</p>
 
-            <p>Whats your Nickname?</p>
+            <p>Seu nome:</p>
 
             <form class="formNickname">
-                <input type="text" name="Nickname" id="i-Nickname" minlength="3" autocomplete="nickname" 
+                <input type="text" name="Nickname" id="i-Nickname" minlength="3" maxlength="10" autocomplete="nickname" 
                 required>
-                <input type="submit" value="Start!"> 
+                <input type="submit" value="Começar!"> 
             </form>
 
         </section>
-        <section class="area">
+        <section class="game">
+
+            <div class="info">
+                <div class="timer">00:00</div>
+                <span class="material-symbols-outlined">timer</span>
+                <div>
+                    <p class="jogador">Alexandre</p>
+                    <p class="pontuacao">10 Pontos</p>
+                </div>
+            </div>
 
             <div class="screen">
 
+                <p class="titulo">Questão 0</p>
+
+                <p class="pergunta">Como se chama a palava no qual a sua escrita da direita para a esquerda e da esquerda para direita é a mesma coisa? Ex.: 'ovo', 'arara' 'esse'</p>
+
             </div>
 
-            <div class="questions">
-                <div question="1"></div>
-                <div question="2"></div>
-                <div question="3"></div>
-                <div question="4"></div>
+            <div class="questoes">
+                <button opcao="1"> a) opção 1 </button>
+                <button opcao="2"> b) opção 2 </button>
+                <button opcao="3"> c) opção 3 </button>
+                <button opcao="4"> d) opção 4 </button>
             </div>
+
+            <button class="verificador">Próxima questão</button>
 
         </section>
         <section class="result">

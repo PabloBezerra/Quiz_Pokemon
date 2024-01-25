@@ -1,0 +1,41 @@
+// IMPORTS
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Passion+One:wght@400;700&family=Space+Grotesk:wght@300;500&display=swap');
+
+//VARIABLES
+
+$font:'Passion One', arial, sans-serif;
+$cinza: #607274;
+$bege: #FAEED1;
+$concreto:#B2A59B;
+$bege-esc:#DED0B6;
+
+
+//RESET GENERAL
+*{
+    padding: 0;
+    margin: 0;
+    font-family: $font;
+    box-sizing: border-box;
+    transition: all ease-in-out .8s;
+}
+
+body, html{
+    width: 100vw;
+    height: 100vh;
+    background: $cinza;
+    ::-webkit-scrollbar{display: none;}
+    ::-webkit-scrollbar-thumb{display: none;}
+}
+
+main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@import 'game.scss', 'lobby.scss', 'animacao.scss';
