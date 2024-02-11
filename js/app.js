@@ -1,6 +1,6 @@
 import { exit, entrar, esmaecer } from "./animacoes.js"
-import { resetBotoes,  } from "./view.js"
-import { verificaQuestoes,sortearQuestao, selecionaQuestoes } from "./questoes.js"
+import { construirQuestao, resetBotoes} from "./view.js"
+import { verificaQuestoes, sortearQuestao, selecionaQuestoes } from "./questoes.js"
 
 const lobby = document.querySelector('.lobby')
 const game = document.querySelector('.game')
@@ -8,6 +8,7 @@ const btnVerificador = document.querySelector('.verificador')
 export const questoes = document.querySelector('.questoes')
 
 let listaDeQuestoes = []
+export let currentQuestao = {}
 
 window.addEventListener('load',()=>{
     lobby.style.height = '90%'
@@ -16,8 +17,7 @@ window.addEventListener('load',()=>{
 document.querySelector('.formNickname').addEventListener('submit',(event)=>{
     event.preventDefault()
     exit(lobby)
-    verificaQuestoes(selecionaQuestoes)
-    escolherQuestao()
+    verificaQuestoes(selecionaQuestoes,trazerQuestões)
     entrar(game)
 })
 
@@ -30,12 +30,19 @@ questoes.addEventListener('click',function(event){
     }
 })
 
-export function buscarListaDeQuestoes(questoes){
+btnVerificador.addEventListener('click',function(){
+    if(this.innerText === 'Próxima questão') return
+    
+})
+
+async function trazerQuestões(questoes){
+    await questoes
     listaDeQuestoes = questoes
+    escolherQuestao()
 }
 
 function escolherQuestao(){
-    console.log(listaDeQuestoes)
-    const questao = sortearQuestao(listaDeQuestoes)
-    listaDeQuestoes.splice(listaDeQuestoes.indexOf(questao), 1)
+    currentQuestao = sortearQuestao(listaDeQuestoes)
+    construirQuestao(currentQuestao)
+    listaDeQuestoes.splice(listaDeQuestoes.indexOf(currentQuestao), 1)
 }

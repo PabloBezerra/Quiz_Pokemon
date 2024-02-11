@@ -158,5 +158,13 @@
         "3": "1941",
         "4": "1950",
         "correto":"1"
+    },
+    {
+        "questao": "Qual pais possui a maior fronteira terrestre com a frança?",
+        "1": "Espanha",
+        "2": "Brasil",
+        "3": "Marrocos",
+        "4": "Alemanha",
+        "correto":"2"
     }
 ]

@@ -1,8 +1,12 @@
-import {buscarListaDeQuestoes} from './app.js'
+export async function verificaQuestoes(cb1,cb2){
+    await fetch('./questoes.json')
+    .then((res => res.json()))
+    .then(quests => cb1(quests,cb2))
+    .catch(error => console.log(error))
+}
 
-export function selecionaQuestoes(questoes, cb){    
-    const questoesSelecionadas = []
-  
+export function selecionaQuestoes(questoes, cb){
+    let questoesSelecionadas = []
     while (questoesSelecionadas.length < 10){
         const questao = sortearQuestao(questoes)
         if(questao !== undefined && !questoesSelecionadas.includes(questao) ){
@@ -17,32 +21,14 @@ export function sortearQuestao(array){
     return array[questaoSorteada]
 }
 
-export function verificaQuestoes(cb){
-    const url = './questoes.json'
-    const json = new XMLHttpRequest()
-    json.open('GET', url)
-    json.send(null)
-    json.onreadystatechange = function(){
-        if(json.readyState === 4){
-            if(json.status === 200 || json.status === 304){
-                const dados = JSON.parse(json.response)
-                if(typeof cb === 'function'){
-                    cb(dados, buscarListaDeQuestoes)
-                }
-            }else{
-                alert("Algo deu errado com as questões. Por favor recarregue a página")
-            }
-        }
-    }
-}
 
 
 
-// {
-//     "questao": "",
-//     "1": "",
-//     "2": "",
-//     "3": "",
-//     "4": "",
-//     "correto":""
-// }
+/*{
+    "questao": "",
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "",
+    "correto":""
+}*/
