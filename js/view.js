@@ -1,14 +1,37 @@
-import { questoes, currentQuestao } from "./app.js";
+import { questoes, currentQuestao, screen, info } from "./app.js";
 
-const tela = document.querySelector('div.screen')
-const info = document.querySelector('div.info')
 const ordem = [1, 2, 3, 4]
 let cont = 0
+let pontuacao = 0
+let sec = 0
+let min = 0
+
+function time(){
+    sec += 1
+    if(sec >= 60){
+        sec = 0
+        min += 1
+    }
+    info.firstElementChild.innerText = `${min < 10 ? '0' + min : min }:${sec < 10 ? '0' + sec : sec}`
+}
+
+export function updateTime(){
+    setInterval(time, 1000)
+}
+
+export function nome(nome){
+    info.lastElementChild.firstElementChild.innerText = nome.value
+}
+
+export function UpdatePontuacao(){
+    pontuacao++
+    info.lastElementChild.lastElementChild.innerText = pontuacao
+}
 
 export function construirQuestao(){
     cont++
     const reordem = reorganizaArray(ordem)
-    tela.innerHTML =`
+    screen.innerHTML =`
     <p class="titulo"> Questão ${cont} </p>
     <p class="pergunta"> ${currentQuestao.questao}
     `
@@ -20,13 +43,19 @@ export function construirQuestao(){
 `
 }
 
-function analiseQuestao(){
+export function analiseQuestao(selecionado){
     const correto = currentQuestao.correto
-    
+    if(selecionado.getAttribute('opcao') === correto){
+        selecionado.classList.add('correto')
+        UpdatePontuacao()
+    }else{
+        questoes.querySelector(`[opcao="${correto}"]`).classList.add('correto')
+        selecionado.classList.add('errado')
+    }
 }
 
-export function resetBotoes(dom){
-    [...dom.children].forEach(element => {
+export function resetBotoes(){
+    [...questoes.querySelectorAll('button')].forEach(element => {
         if (element.classList.contains('selecionado')) element.classList.remove('selecionado')
         if (element.classList.contains('correto')) element.classList.remove('correto')
         if (element.classList.contains('errado')) element.classList.remove('errado')
@@ -36,3 +65,9 @@ export function resetBotoes(dom){
 function reorganizaArray(array) {
     return array.sort(() => Math.random() - 0.5);
   }
+
+export class View{
+    constructor(){
+        
+    }
+}

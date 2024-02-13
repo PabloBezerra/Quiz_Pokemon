@@ -11,9 +11,9 @@ export function entrar(element){
         element.style.display = 'flex'
     }, 800)
 }
-export function esmaecer(element){
-    element.style.animation = 'esmaecer .8s'
+export function esmaecer(element,reverso=false){
+    element.style.animation = `esmaecer${reverso? '-reverso': ''} .8s`
     setTimeout(()=>{
-        element.style.opacity = '1'
-    }, 800)
+        element.style.opacity = `${reverso? '0': '1'} `
+    }, 500)
 }

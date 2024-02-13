@@ -19,10 +19,14 @@ export function selecionaQuestoes(questoes, cb){
 export function sortearQuestao(array){
     const questaoSorteada = Math.floor(Math.random() * (array.length))
     return array[questaoSorteada]
+} 
+
+
+export class Server{
+    constructor(){
+        
+    }
 }
-
-
-
 
 /*{
     "questao": "",
