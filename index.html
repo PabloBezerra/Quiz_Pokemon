@@ -21,6 +21,9 @@
             <form class="formNickname">
                 <input type="text" name="Nickname" id="i-Nickname" minlength="3" maxlength="10" autocomplete="nickname" 
                 required>
+                <p>Quantidade de Questões</p>
+                <input type="range" name="range" id="idRange" min="10" max="50" step="10" value="10">
+                <label for="range">10</label>
                 <input type="submit" value="Começar!"> 
             </form>
 
@@ -51,11 +54,11 @@
                 <button opcao="4"> </button>
             </div> 
 
-            <button class="verificador" dis>Próxima questão</button>
+            <button class="verificador" disabled >Próxima questão</button>
 
         </section>
         <section class="result">
-
+            
         </section>
     </main>
 </body>

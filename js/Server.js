@@ -1,31 +1,35 @@
-export async function verificaQuestoes(cb1,cb2){
-    await fetch('./questoes.json')
-    .then((res => res.json()))
-    .then(quests => cb1(quests,cb2))
-    .catch(error => console.log(error))
-}
-
-export function selecionaQuestoes(questoes, cb){
-    let questoesSelecionadas = []
-    while (questoesSelecionadas.length < 10){
-        const questao = sortearQuestao(questoes)
-        if(questao !== undefined && !questoesSelecionadas.includes(questao) ){
-            questoesSelecionadas.push(questao)
-        }
-    }
-    cb(questoesSelecionadas)
-}
-
-export function sortearQuestao(array){
-    const questaoSorteada = Math.floor(Math.random() * (array.length))
-    return array[questaoSorteada]
-} 
-
-
 export class Server{
     constructor(){
-        
+        this.url = './questoes.json'
+        this.questoesSelecionadas = []
     }
+
+    async separaQuestoes(qnt){
+        let quests = null
+        try {
+            const response = await fetch(this.url);
+            quests = await response.json()
+        } catch (error) {
+            console.log(error);
+        }
+        while (this.questoesSelecionadas.length < qnt){
+            const questao = this.sortearQuestao(quests)
+            if(questao !== undefined && !this.questoesSelecionadas.includes(questao) ){
+                this.questoesSelecionadas.push(questao)
+            }
+        }
+    }
+    
+    selecionaQuestao(){
+        const currentQuestao = this.sortearQuestao(this.questoesSelecionadas)
+        this.questoesSelecionadas.splice(this.questoesSelecionadas.indexOf(currentQuestao), 1)
+        return currentQuestao
+    }
+
+    sortearQuestao(array){
+        const questaoSorteada = Math.floor(Math.random() * (array.length))
+        return array[questaoSorteada]
+    } 
 }
 
 /*{
