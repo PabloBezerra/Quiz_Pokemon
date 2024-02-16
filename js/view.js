@@ -1,8 +1,11 @@
+import { esmaecer } from "./animacoes.js"
+
 export class View{
-    constructor(domQuestao, domScreen, domInfo){
+    constructor(domQuestao, domScreen, domInfo, domButton){
         this.domQuestao = domQuestao
         this.domInfo = domInfo
         this.domScreen = domScreen
+        this.domButton = domButton
     }
 
     nome(nome){
@@ -23,15 +26,25 @@ export class View{
         <p class="pergunta"> ${questao.questao}
         `
         this.domQuestao.innerHTML = `
-        <button opcao="${ordem[0]}"> a) ${questao[ordem[0]]}</button>
-        <button opcao="${ordem[1]}"> b) ${questao[ordem[1]]}</button>
-        <button opcao="${ordem[2]}"> c) ${questao[ordem[2]]}</button>
-        <button opcao="${ordem[3]}"> d) ${questao[ordem[3]]}</button>
+        <button opcao="${ordem[0]}"> <span>A</span> ${questao[ordem[0]]}</button>
+        <button opcao="${ordem[1]}"> <span>B</span> ${questao[ordem[1]]}</button>
+        <button opcao="${ordem[2]}"> <span>C</span> ${questao[ordem[2]]}</button>
+        <button opcao="${ordem[3]}"> <span>D</span> ${questao[ordem[3]]}</button>
     `
     }
 
     marcar(dom, marcado){
         dom.classList.add(`${marcado}`)
+    }
+
+    btnVerificador(txt, disabled=false){
+        this.domButton.innerText = `${txt}`
+        esmaecer(this.domButton)
+        this.domButton.disabled = disabled
+    }
+
+    tabela(){
+        return
     }
 
     resetBotoes(){

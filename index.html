@@ -12,31 +12,41 @@
     <main>
         <section class="lobby">
 
-            <p>Bem vindo ao quiz</p>
-
-            <p>Onde o seu conhecimento seu é posto a prova!</p>
-
-            <p>Seu nome:</p>
+            <div class="title">
+                <h2>Seja Bem Vindo ao Quiz</h2>
+                <h1>Conhecimentos Gerais</h1>
+            </div>
+            <img src="./images/cerebro-2.png" alt="Imagem Cérebro">
+            <h3>Onde o seu conhecimento seu é posto a prova!</h3>
 
             <form class="formNickname">
-                <input type="text" name="Nickname" id="i-Nickname" minlength="3" maxlength="10" autocomplete="nickname" 
-                required>
-                <p>Quantidade de Questões</p>
-                <input type="range" name="range" id="idRange" min="10" max="50" step="10" value="10">
-                <label for="range">10</label>
+
+                <div class="player">
+                    <p>Seu nome:</p>
+                    <input type="text" name="Nickname" id="i-Nickname" minlength="3" maxlength="10" autocomplete="nickname"
+                    required>
+                </div>
+
+                <div class="qntDeQuestoes">
+                    <p>Quantidade de Questões</p>
+                    <input type="range" name="range" id="idRange" min="10" max="50" step="10" value="10">
+                    <label for="range">10</label>
+                </div>
+
                 <input type="submit" value="Começar!"> 
+
             </form>
 
         </section>
         <section class="game">
 
             <div class="info">
-                <div class="timer">00:00</div>
-                <span class="material-symbols-outlined">timer</span>
                 <div>
-                    <p class="jogador">Alexandre</p>
-                    <p class="pontuacao">10 Pontos</p>
+                    <span class="material-symbols-outlined">timer</span>    
+                    <div class="timer">00:00</div>
                 </div>
+                <p class="jogador">Alexandre</p>
+                <p class="pontuacao">10 Pontos</p>
             </div>
 
             <div class="screen">
@@ -48,10 +58,10 @@
             </div>
 
             <div class="questoes">
-                <button opcao="1"> </button>
-                <button opcao="2"> </button>
-                <button opcao="3"> </button>
-                <button opcao="4"> </button>
+                <button opcao="1"><span>A</span> </button>
+                <button opcao="2"><span>B</span> </button>
+                <button opcao="3"><span>C</span> </button>
+                <button opcao="4"><span>D</span> </button>
             </div> 
 
             <button class="verificador" disabled >Próxima questão</button>

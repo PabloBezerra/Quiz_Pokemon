@@ -1,15 +1,18 @@
 // IMPORTS
 
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Passion+One:wght@400;700&family=Space+Grotesk:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 //VARIABLES
 
-$font:'Passion One', arial, sans-serif;
-$cinza: #607274;
-$bege: #FAEED1;
-$concreto:#B2A59B;
-$bege-esc:#DED0B6;
+$font:'Oswald', arial, sans-serif;
+//$Primario: #1d1535;
+//$Secundario: #402d74;
+$branco:#EEE2DE;
 
+$Primario : #570c0c;
+$Secundario : #8d1414;
+//$Primario : #08330b;
+//$Secundario : #0d5e12;
 
 //RESET GENERAL
 *{
@@ -20,12 +23,42 @@ $bege-esc:#DED0B6;
     transition: all ease-in-out .8s;
 }
 
-body, html{
+body{
     width: 100vw;
     height: 100vh;
-    background: $cinza;
-    ::-webkit-scrollbar{display: none;}
-    ::-webkit-scrollbar-thumb{display: none;}
+    background: $Primario;
+    position: relative;
+    overflow: hidden;
+    &::-webkit-scrollbar{display: none;}
+    &::-webkit-scrollbar-thumb{display: none;}
+    &::after{
+        content: '';
+        position: absolute;
+        left: -150px;
+        top: -150px;
+        display: block;
+        width: 300px;
+        height: 300px;
+        background-color: transparent;
+        border-radius: 50%;
+        border: 50px solid $Secundario;
+        z-index: -1;
+        opacity: .5;
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        left:calc(100vw - 200px);
+        top:calc(100vh - 200px);
+        display: block;
+        width: 300px;
+        height: 300px;
+        background-color: transparent;
+        border-radius: 50%;
+        border: 50px solid $Secundario;
+        z-index: -1;
+        opacity: .5;
+    }
 }
 
 main{
@@ -38,4 +71,4 @@ main{
 }
 
 
-@import 'game.scss', 'lobby.scss', 'animacao.scss';
+@import 'results.scss', 'game.scss', 'lobby.scss', 'animacao.scss';

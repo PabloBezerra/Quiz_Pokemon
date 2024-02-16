@@ -22,21 +22,27 @@ export class Controller{
     }
 
     next(){
+        console.log(this.cont,this.maxCont)
         if(this.cont === this.maxCont){
-            this.end()
+            const resumo = {
+                jogador: this.jogador,
+                tempo: `${this.min}: ${this.sec}`,
+                pontos: this.pontuacao
+            }
+            view.tabela(resumo)
+            this.reset()
+            this.updateTime(true)
+            return
         }
         view.resetBotoes()
         this.getQuestao()
-    }
-
-    end(){
-
+        view.btnVerificador('', true)
     }
 
     nomeJogador(nome){
         this.jogador = nome.value
         view.nome(nome)
-    }
+}
 
     getQuestao(){
         this.cont++
@@ -54,6 +60,7 @@ export class Controller{
             view.marcar(selecionado.parentElement.querySelector(`[opcao="${correto}"]`), 'correto')
             view.marcar(selecionado, 'errado')
         }
+        view.btnVerificador(this.cont === this.maxCont ? 'Finalizar':'Próxima questão', false)
     }
 
     reorganizaArray(array) {
@@ -80,5 +87,14 @@ export class Controller{
     updatePontuacao(plus=false){
         plus ? this.pontuacao++ : this.pontuacao
         view.insertPontuacao(this.pontuacao)
+    }
+
+    reset(){
+        this.cont = 0
+        this.maxCont = null
+        this.jogador = null
+        this.pontuacao = 0
+        this.sec = 0
+        this.min = 0
     }
 }
