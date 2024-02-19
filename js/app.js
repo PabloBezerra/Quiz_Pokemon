@@ -1,16 +1,18 @@
 import { exit, entrar, esmaecer } from "./animacoes.js"
 import { Server } from "./Server.js"
-import { View } from "./view.js"
+import { View } from "./View.js"
 import { Controller } from "./Controller.js"
 
 const lobby = document.querySelector('.lobby')
 const game = document.querySelector('.game')
 const btnVerificador = document.querySelector('.verificador')
 const screen = document.querySelector('.screen')
+const barra = document.querySelector('.barra')
 const questoes = document.querySelector('.questoes')
 const info = document.querySelector('.info')
+const gaveta = document.querySelector('.gavetaCores')
 
-export const view = new View(questoes, screen, info, btnVerificador )
+export const view = new View(questoes, screen, barra.firstElementChild, info, btnVerificador, lobby )
 export const server = new Server()
 export const controller = new Controller()
 
@@ -43,4 +45,15 @@ btnVerificador.addEventListener('click',function(){
         return
     }
     controller.next()
+})
+
+gaveta.addEventListener('click', (event)=>{
+    if(event.target.tagName === 'SPAN'){
+        controller.mudarCor(event.target, gaveta)
+        
+    }else if(event.target.classList.contains('cor')){
+        controller.mudarCor(event.target, gaveta)
+    }else{
+        gaveta.classList.remove('ativado')
+    }
 })

@@ -1,11 +1,13 @@
 import { esmaecer } from "./animacoes.js"
 
 export class View{
-    constructor(domQuestao, domScreen, domInfo, domButton){
+    constructor(domQuestao, domScreen, domBarra, domInfo, domButton, domLobby){
         this.domQuestao = domQuestao
         this.domInfo = domInfo
         this.domScreen = domScreen
+        this.domBarra = domBarra
         this.domButton = domButton
+        this.domLobby = domLobby
     }
 
     nome(nome){
@@ -25,26 +27,39 @@ export class View{
         <p class="titulo"> Questão ${cont} de ${maxCont} </p>
         <p class="pergunta"> ${questao.questao}
         `
+        this.domBarra.style.transform = `translateX(${((cont*100)/maxCont) - 100}%)`
+
         this.domQuestao.innerHTML = `
-        <button opcao="${ordem[0]}"> <span>A</span> ${questao[ordem[0]]}</button>
-        <button opcao="${ordem[1]}"> <span>B</span> ${questao[ordem[1]]}</button>
-        <button opcao="${ordem[2]}"> <span>C</span> ${questao[ordem[2]]}</button>
-        <button opcao="${ordem[3]}"> <span>D</span> ${questao[ordem[3]]}</button>
+        <button opcao="${ordem[0]}"> <span class="bgColor" >A</span> ${questao[ordem[0]]}</button>
+        <button opcao="${ordem[1]}"> <span class="bgColor" >B</span> ${questao[ordem[1]]}</button>
+        <button opcao="${ordem[2]}"> <span class="bgColor" >C</span> ${questao[ordem[2]]}</button>
+        <button opcao="${ordem[3]}"> <span class="bgColor" >D</span> ${questao[ordem[3]]}</button>
     `
     }
 
-    marcar(dom, marcado){
+    marcar(dom, marcado, desmarcar=false){
+        if(desmarcar){
+            dom.classList.remove(`${marcado}`)
+            return
+        }
         dom.classList.add(`${marcado}`)
     }
 
     btnVerificador(txt, disabled=false){
         this.domButton.innerText = `${txt}`
-        esmaecer(this.domButton)
         this.domButton.disabled = disabled
     }
 
     tabela(){
         return
+    }
+
+    mudarCor(cor,num){
+        console.log(cor);
+        [...document.querySelectorAll('.color')].forEach(element =>{ element.style.color = `${cor}`});
+        [...document.querySelectorAll('.bgColor')].forEach(element =>{element.style.backgroundColor = `${cor}`});
+        [...document.querySelectorAll('.borderColor')].forEach(element =>{element.style.borderColor = `${cor}`});
+        this.domLobby.querySelector('img').src = `./images/cerebro-${num}.png`
     }
 
     resetBotoes(){

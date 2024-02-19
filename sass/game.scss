@@ -54,8 +54,29 @@ section.game{
         p.pergunta{
             height: auto;
             margin: auto;
+            text-align: left;
             color: $branco;
-            font-size: 30px;
+            font-size: 28px;
+        }
+
+    }
+
+    div.barra{
+        width: 90%;
+        margin: auto;
+        margin-bottom: 10px;
+        height: 10px;
+        border-radius: 10px;
+        border: 1px solid $Secundario;
+        overflow: hidden;
+        
+        span{
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            background-color: $Terciario;
+            transform: translateX(- 100%);
         }
     }
 
@@ -80,6 +101,10 @@ section.game{
             align-items: center;
             cursor: pointer;
 
+            &:hover{
+                box-shadow: 0px 0px 10px $branco;
+            }
+
             &.selecionado{
                 background-color: $branco;
                 color: $Primario;
@@ -102,7 +127,7 @@ section.game{
                 margin: 8px;
                 width: 40px;
                 height: 40px;
-                background-color: $Primario;
+                background-color: $Terciario;
                 color: $branco;
                 text-align: center;
                 font-size: 25px;
@@ -114,14 +139,18 @@ section.game{
         width: 90%;
         height: 50px;
         margin: auto;
+        margin-top: 10px;
         border: none;
         border-radius: 10px;
-        background-color: $branco;
-        color: $Primario;
+        background-color: $Terciario;
+        color: $branco;
         font-size: 20px;
         font-weight: 700;
         align-items: center;
-        opacity: 0;
         cursor: pointer;
+
+        &:disabled{
+            filter: grayscale(.8);
+        }
     }
 }

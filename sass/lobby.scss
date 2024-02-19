@@ -50,11 +50,12 @@ section.lobby{
         input[type='text']{
             width: 250px;
             height: 40px;
-            color: $Secundario;
+            color: $Terciario;
             border: none;
             border-radius: 10px;
             padding: 5px;
             font-size: 20px;
+            font-weight: 500;
             text-align: center;
             background-color: $branco;
         }
@@ -68,12 +69,12 @@ section.lobby{
             appearance: none;
             margin-top: 10px;
             justify-self: center;
-            background-color: $Secundario;
+            background-color: $Terciario;
             border-radius: 10px;
             margin-right: 10px;
 
-            &::-moz-slider-thumb{
-                color: $branco;
+            &::-webkit-slider-thumb{
+                background-color: $branco;
             }
         }
 
@@ -85,7 +86,7 @@ section.lobby{
         input[type='submit']{
             width: 250px;
             height: 40px;
-            background-color: $Primario;
+            background-color: transparent;
             color: $branco;
             border: 1px solid $branco;
             border-radius: 10px;

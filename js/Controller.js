@@ -22,7 +22,6 @@ export class Controller{
     }
 
     next(){
-        console.log(this.cont,this.maxCont)
         if(this.cont === this.maxCont){
             const resumo = {
                 jogador: this.jogador,
@@ -36,7 +35,7 @@ export class Controller{
         }
         view.resetBotoes()
         this.getQuestao()
-        view.btnVerificador('', true)
+        view.btnVerificador('Verificar', true)
     }
 
     nomeJogador(nome){
@@ -87,6 +86,37 @@ export class Controller{
     updatePontuacao(plus=false){
         plus ? this.pontuacao++ : this.pontuacao
         view.insertPontuacao(this.pontuacao)
+    }
+
+    mudarCor(event, gaveta){
+        if(event.tagName === 'SPAN'){
+            if(gaveta.classList.contains('ativado')){
+                view.marcar(gaveta, 'ativado', true)
+                return
+            }
+            view.marcar(gaveta, 'ativado')
+        }else if(event.classList.contains('cor')){
+            const cor = window.getComputedStyle(event).backgroundColor
+            const num = event.getAttribute('cor')
+            view.mudarCor(this.rgbParaHex(cor), num)
+            view.marcar(gaveta, 'ativado', true)
+        }
+    }
+
+    // Convertendo cada parte do RGB para hexadecimal e formatando
+    rgbParaHex(rgb) {
+        if (/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/.test(rgb)) {
+            const partes = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+            delete(partes[0]);
+            for (let i = 1; i <= 3; ++i) {
+                partes[i] = parseInt(partes[i], 10).toString(16);
+                if (partes[i].length == 1) partes[i] = '0' + partes[i];
+            }
+            return '#' + partes.join('');
+        }
+        else {
+            return rgb;
+        }
     }
 
     reset(){
