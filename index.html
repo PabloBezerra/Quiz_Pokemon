@@ -9,16 +9,17 @@
     <script defer src="js/app.js" type="module"></script>
 </head>
 <body>
-    <div class="argola1 borderColor"></div>
-    <div class="argola2 borderColor"></div>
+    <div class="ring1 borderColor"></div>
+    <div class="ring2 borderColor"></div>
 
     <main>
-        <div class="gavetaCores">
-            <div class="cores">
-                <div class="cor" cor="1"></div>
-                <div class="cor" cor="2"></div>
-                <div class="cor" cor="3"></div>
-                <div class="cor" cor="4"></div>
+        <div class="colorDrawer">
+            <div class="colors">
+                <div class="color" color="1"></div>
+                <div class="color" color="2"></div>
+                <div class="color" color="3"></div>
+                <div class="color" color="4"></div>
+                <div class="color" color="5"></div>
             </div>
             <span class="material-symbols-outlined"> chevron_left </span>
         </div>
@@ -36,7 +37,7 @@
 
                 <div class="player">
                     <p>Seu nome:</p>
-                    <input class="color" type="text" name="Nickname" id="i-Nickname" minlength="3" maxlength="10" autocomplete="nickname"
+                    <input class="color" type="text" name="Nickname" id="i-Nickname" minlength="3" maxlength="8" autocomplete="nickname"
                     required>
                 </div>
 
@@ -73,17 +74,40 @@
             <div class="barra"><span class="bgColor"></span></div>
             
             <div class="questoes">
-                <button opcao="1"><span class="bgColor" >A</span> </button>
-                <button opcao="2"><span class="bgColor" >B</span> </button>
-                <button opcao="3"><span class="bgColor" >C</span> </button>
-                <button opcao="4"><span class="bgColor" >D</span> </button>
+                <div class="buttons">
+                    <button opcao="1"></button>
+                    <button opcao="2"></button>
+                    <button opcao="3"></button>
+                    <button opcao="4"></button>
+                </div>
+                <div class="spans">
+                    <span class="bgColor">A</span>
+                    <span class="bgColor">B</span>
+                    <span class="bgColor">C</span>
+                    <span class="bgColor">D</span>
+                </div>
             </div> 
 
             <button class="verificador bgColor" disabled >Verificar</button>
 
         </section>
         <section class="result">
-            
+            <h2 class="color">Resultados</h2>
+            <div class="infoFinal bgColor">
+                <p class="ponto"><i>08</i></p>
+                <div class="infos">
+                    <p class="nome">Psdj</p>
+                    <p class="tempo">00:00</p>
+                </div>
+            </div>
+            <div class="hidden visivel borderColor">
+                <p>Quantidade de questões: <span class="qntDeQuestoes color">50 Questões</span></p>
+                <p>Porcentagem de acerto: <span class="porcDeAcerto color">100%</span></p>
+                <p>Média de tempo por questão: <span class="mediaTempo color">00 seg</span></p>
+            </div>
+
+            <button class="color">Jogar Novamente</button>
+
         </section>
     </main>
 </body>

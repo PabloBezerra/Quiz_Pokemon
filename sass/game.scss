@@ -81,50 +81,68 @@ section.game{
     }
 
     div.questoes{
-        width: 100%;
+        width: 90%;
         height: 250px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-
-        button{
+        position: relative;
+        margin: auto;
+        
+        div.buttons{
+            width: 100%;
+            height: 100%;
             display: flex;
-            width: 90%;
-            height: 50px;
-            border: none;
-            border-radius: 10px;
-            background-color: $Secundario;
-            color: $branco;
-            font-size: 20px;
-            font-weight: 700;
-            align-items: center;
-            cursor: pointer;
-
-            &:hover{
-                box-shadow: 0px 0px 10px $branco;
-            }
-
-            &.selecionado{
-                background-color: $branco;
-                color: $Primario;
-            }
-
-            &.correto{
-                background-color: darkgreen;
-                color: $branco;
-                box-shadow: 0px 0px 10px $branco;
-            }
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: end;
             
-            &.errado{
+            button{
+                display: flex;
+                width: 95%;
+                height: 50px;
+                border: none;
+                border-radius: 10px;
+                padding-left: 30px;
+                background-color: $Secundario;
+                color: $branco;
+                font-size: 20px;
+                font-weight: 700;
+                align-items: center;
+                cursor: pointer;
+                
+                &:hover{
+                    box-shadow: 0px 0px 10px $branco;
+                }
+                
+                &.selecionado{
+                    background-color: $branco;
+                    color: $Primario;
+                }
+                
+                &.correto{
+                    background-color: darkgreen;
+                    color: $branco;
+                box-shadow: 0px 0px 10px $branco;
+                }
+            
+                &.errado{
                 background-color: darkred;
                 color: $branco;
                 box-shadow: 0px 0px 10px $branco;
+                }
             }
+        }
+
+        div.spans{
+            width: auto;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            top : 0px;
+            left : 0px;
 
             span{
                 border-radius: 5px;
-                margin: 8px;
                 width: 40px;
                 height: 40px;
                 background-color: $Terciario;
@@ -144,13 +162,16 @@ section.game{
         border-radius: 10px;
         background-color: $Terciario;
         color: $branco;
-        font-size: 20px;
+        font-size: 25px;
         font-weight: 700;
         align-items: center;
         cursor: pointer;
 
         &:disabled{
             filter: grayscale(.8);
+            background-color: transparent;
+            border: 1px solid $branco;
+            opacity: .5;
         }
     }
 }

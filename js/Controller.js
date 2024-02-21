@@ -21,16 +21,20 @@ export class Controller{
         this.updatePontuacao()
     }
 
-    next(){
+    next(game, results){
         if(this.cont === this.maxCont){
             const resumo = {
                 jogador: this.jogador,
-                tempo: `${this.min}: ${this.sec}`,
-                pontos: this.pontuacao
+                tempo: `${this.min < 10 ? '0'+ this.min: this.min}: ${this.sec}`,
+                pontos: `${this.pontuacao < 10 ? '0' + this.pontuacao : this.pontuacao}`,
+                questoes: this.maxCont,
+                porcentagem: (this.pontuacao * 100 )/this.maxCont,
+                mediaTempo: ((this.min * 60) + this.sec ) /this.maxCont,
             }
-            view.tabela(resumo)
-            this.reset()
+            view.animacoes('exit',game)
+            view.resultados(resumo)
             this.updateTime(true)
+            view.animacoes('entrar', results)
             return
         }
         view.resetBotoes()
@@ -41,7 +45,7 @@ export class Controller{
     nomeJogador(nome){
         this.jogador = nome.value
         view.nome(nome)
-}
+    }
 
     getQuestao(){
         this.cont++
@@ -53,11 +57,11 @@ export class Controller{
     analiseQuestao(selecionado){
         const correto = this.questaoAtual.correto
         if(selecionado.getAttribute('opcao') === correto){
-            view.marcar(selecionado, 'correto')
+            view.mark(selecionado, 'correto')
             this.updatePontuacao(true)
         }else{
-            view.marcar(selecionado.parentElement.querySelector(`[opcao="${correto}"]`), 'correto')
-            view.marcar(selecionado, 'errado')
+            view.mark(selecionado.parentElement.querySelector(`[opcao="${correto}"]`), 'correto')
+            view.mark(selecionado, 'errado')
         }
         view.btnVerificador(this.cont === this.maxCont ? 'Finalizar':'Próxima questão', false)
     }
@@ -88,23 +92,26 @@ export class Controller{
         view.insertPontuacao(this.pontuacao)
     }
 
-    mudarCor(event, gaveta){
+    changeColor(event, drawer){
         if(event.tagName === 'SPAN'){
-            if(gaveta.classList.contains('ativado')){
-                view.marcar(gaveta, 'ativado', true)
+            if(drawer.classList.contains('activated')){
+                view.mark(drawer, 'activated', true)
+                view.rodarElemento(drawer.lastElementChild, -90)
                 return
             }
-            view.marcar(gaveta, 'ativado')
-        }else if(event.classList.contains('cor')){
-            const cor = window.getComputedStyle(event).backgroundColor
-            const num = event.getAttribute('cor')
-            view.mudarCor(this.rgbParaHex(cor), num)
-            view.marcar(gaveta, 'ativado', true)
+            view.mark(drawer, 'activated')
+            view.rodarElemento(drawer.lastElementChild, 90)
+        }else if(event.classList.contains('color')){
+            const color = window.getComputedStyle(event).backgroundColor
+            const num = event.getAttribute('color')
+            view.changeColor(this.rgbToHex(color), num)
+            view.mark(drawer, 'activated', true)
+            view.rodarElemento(drawer.lastElementChild, -90)
         }
     }
 
     // Convertendo cada parte do RGB para hexadecimal e formatando
-    rgbParaHex(rgb) {
+    rgbToHex(rgb) {
         if (/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/.test(rgb)) {
             const partes = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
             delete(partes[0]);
@@ -119,12 +126,14 @@ export class Controller{
         }
     }
 
-    reset(){
+    reset(results, lobby){
         this.cont = 0
         this.maxCont = null
         this.jogador = null
         this.pontuacao = 0
         this.sec = 0
         this.min = 0
+        view.animacoes('exit', results)
+        view.animacoes('entrar', lobby)
     }
 }

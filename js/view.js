@@ -1,13 +1,14 @@
-import { esmaecer } from "./animacoes.js"
+import { exit, entrar, esmaecer } from "./animacoes.js"
 
 export class View{
-    constructor(domQuestao, domScreen, domBarra, domInfo, domButton, domLobby){
+    constructor(domQuestao, domScreen, domBarra, domInfo, domButton, domLobby,domResult){
         this.domQuestao = domQuestao
         this.domInfo = domInfo
         this.domScreen = domScreen
         this.domBarra = domBarra
         this.domButton = domButton
         this.domLobby = domLobby
+        this.domResult = domResult
     }
 
     nome(nome){
@@ -29,15 +30,16 @@ export class View{
         `
         this.domBarra.style.transform = `translateX(${((cont*100)/maxCont) - 100}%)`
 
-        this.domQuestao.innerHTML = `
-        <button opcao="${ordem[0]}"> <span class="bgColor" >A</span> ${questao[ordem[0]]}</button>
-        <button opcao="${ordem[1]}"> <span class="bgColor" >B</span> ${questao[ordem[1]]}</button>
-        <button opcao="${ordem[2]}"> <span class="bgColor" >C</span> ${questao[ordem[2]]}</button>
-        <button opcao="${ordem[3]}"> <span class="bgColor" >D</span> ${questao[ordem[3]]}</button>
-    `
+        this.domQuestao.innerHTML = ''
+        ordem.forEach(element =>{
+            const button = document.createElement('button')
+            button.setAttribute('opcao', element)
+            button.innerText = `${questao[element]}`
+            this.domQuestao.appendChild(button)
+        })
     }
 
-    marcar(dom, marcado, desmarcar=false){
+    mark(dom, marcado, desmarcar=false){
         if(desmarcar){
             dom.classList.remove(`${marcado}`)
             return
@@ -45,28 +47,53 @@ export class View{
         dom.classList.add(`${marcado}`)
     }
 
+    rodarElemento(dom, qnt){
+        dom.style.transform = `rotate(${qnt}deg)`
+    }
+
     btnVerificador(txt, disabled=false){
         this.domButton.innerText = `${txt}`
         this.domButton.disabled = disabled
     }
 
-    tabela(){
-        return
-    }
-
-    mudarCor(cor,num){
-        console.log(cor);
+    changeColor(cor,num){
         [...document.querySelectorAll('.color')].forEach(element =>{ element.style.color = `${cor}`});
         [...document.querySelectorAll('.bgColor')].forEach(element =>{element.style.backgroundColor = `${cor}`});
         [...document.querySelectorAll('.borderColor')].forEach(element =>{element.style.borderColor = `${cor}`});
         this.domLobby.querySelector('img').src = `./images/cerebro-${num}.png`
     }
-
+    
     resetBotoes(){
         [...this.domQuestao.querySelectorAll('button')].forEach(element => {
             if (element.classList.contains('selecionado')) element.classList.remove('selecionado')
             if (element.classList.contains('correto')) element.classList.remove('correto')
             if (element.classList.contains('errado')) element.classList.remove('errado')
         });
+    }
+
+    animacoes(animacao, dom){
+        const opcoes = {
+            exit: (dom)=>{
+                exit(dom)
+            },
+            entrar: (dom)=>{
+                entrar(dom)
+            },
+            esmaecer:(dom)=>{
+                esmaecer(dom)
+            }
+        }
+        if(opcoes[animacao]){
+            opcoes[animacao](dom)
+        }
+    }
+
+    resultados(resumo){
+        this.domResult.querySelector('.ponto').innerHTML = `<i>${resumo.pontos}</i>`
+        this.domResult.querySelector('.nome').innerHTML = `${resumo.jogador}`
+        this.domResult.querySelector('.tempo').innerHTML = resumo.tempo
+        this.domResult.querySelector('.qntDeQuestoes').innerHTML = `${resumo.questoes} Questões`
+        this.domResult.querySelector('.porcDeAcerto').innerHTML = `${resumo.porcentagem}%`
+        this.domResult.querySelector('.mediaTempo').innerHTML = `${resumo.mediaTempo} segundos`
     }
 }

@@ -1,12 +1,12 @@
 export function exit(element){
-    element.style.animation = 'sair .8s'
+    element.style.animation = 'exit .8s'
     setTimeout(()=>{
         element.style.display = 'none'
     }, 800)
 }
 
 export function entrar(element){
-    element.style.animation = 'entrar .8s'
+    element.style.animation = 'enter .8s'
     setTimeout(()=>{
         element.style.display = 'flex'
     }, 800)

@@ -1,4 +1,3 @@
-import { exit, entrar, esmaecer } from "./animacoes.js"
 import { Server } from "./Server.js"
 import { View } from "./View.js"
 import { Controller } from "./Controller.js"
@@ -8,11 +7,12 @@ const game = document.querySelector('.game')
 const btnVerificador = document.querySelector('.verificador')
 const screen = document.querySelector('.screen')
 const barra = document.querySelector('.barra')
-const questoes = document.querySelector('.questoes')
+const questoes = document.querySelector('.buttons')
 const info = document.querySelector('.info')
-const gaveta = document.querySelector('.gavetaCores')
+const drawer = document.querySelector('.colorDrawer')
+const results = document.querySelector('.result')
 
-export const view = new View(questoes, screen, barra.firstElementChild, info, btnVerificador, lobby )
+export const view = new View(questoes, screen, barra.firstElementChild, info, btnVerificador, lobby, results )
 export const server = new Server()
 export const controller = new Controller()
 
@@ -26,34 +26,40 @@ document.querySelector('#idRange').addEventListener('input',function(event){
 
 document.querySelector('.formNickname').addEventListener('submit',function(event){
     event.preventDefault()
-    exit(lobby)
+    view.animacoes('exit', lobby)
     controller.start(this.querySelector('[type="text"]'),+this.querySelector('label').innerText)
-    entrar(game)
+    view.animacoes('entrar', game)
 })
 
-questoes.addEventListener('click',function(event){
+questoes.addEventListener('click', function (event){
     if (event.target.tagName === 'BUTTON'){
         view.btnVerificador('Verificar', false)
         view.resetBotoes()
-        view.marcar(event.target,'selecionado')
+        view.mark(event.target,'selecionado')
     }
 })
 
 btnVerificador.addEventListener('click',function(){
     if(this.innerText === 'Verificar'){
         controller.analiseQuestao(questoes.querySelector('.selecionado'))
+        questoes.nextElementSibling.style.width = '100%'
         return
     }
-    controller.next()
+    controller.next(game, results)
+    questoes.nextElementSibling.style.width = 'auto'
 })
 
-gaveta.addEventListener('click', (event)=>{
+drawer.addEventListener('click', (event)=>{
     if(event.target.tagName === 'SPAN'){
-        controller.mudarCor(event.target, gaveta)
+        controller.changeColor(event.target, drawer)
         
-    }else if(event.target.classList.contains('cor')){
-        controller.mudarCor(event.target, gaveta)
+    }else if(event.target.classList.contains('color')){
+        controller.changeColor(event.target, drawer)
     }else{
-        gaveta.classList.remove('ativado')
+        drawer.classList.remove('activated')
     }
+})
+
+results.querySelector('button').addEventListener('click',()=>{
+    controller.reset(results, lobby)
 })

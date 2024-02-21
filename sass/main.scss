@@ -50,13 +50,13 @@ body{
     // }
 }
 
-div.argola1{
+div.ring1{
     display: block;
     width: 600px;
     height: 600px;
     background-color: transparent;
     border-radius: 50%;
-    border: 50px solid #8d1414;
+    border: 40px solid #8d1414;
     position: absolute;
     left: -250px;
     top: calc((100vh/2) - 300px);
@@ -64,7 +64,7 @@ div.argola1{
     opacity: .3;
 }
 
-div.argola2{
+div.ring2{
     display: none;
 }
 
@@ -76,13 +76,13 @@ main{
     justify-content: center;
     align-items: center;
 
-    div.gavetaCores{
+    div.colorDrawer{
         position: absolute;
         display: flex;
         flex-direction: column;
         width: auto;
         height: auto;
-        left: calc((100vw / 2) - 80px);
+        left: calc((100vw / 2) - 100px);
         top: - 40px;
         color: $branco;
         border-radius: 30px;
@@ -90,7 +90,7 @@ main{
         align-items: center;
         z-index: 10;
 
-        &.ativado{
+        &.activated{
             top: 10px
         }
 
@@ -100,14 +100,14 @@ main{
             transform: rotate(-90deg);
         }
 
-        div.cores{
-            width: 160px;
+        div.colors{
+            width: 200px;
             display: flex;
             flex-direction: row;
             background-color: rgba(255, 255, 255, 0.048);
             border-radius: 20px;
 
-            div{
+            div.color{
                 width: 30px;
                 height: 30px;
                 margin: 5px;
@@ -130,6 +130,9 @@ main{
             }
             :nth-child(4){
                 background-color: #41AAFA;
+            }
+            :nth-child(5){
+                background-color: #cf9d06;
             }
         }
     }   
