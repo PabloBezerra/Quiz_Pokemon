@@ -28,7 +28,7 @@ Bem-vindo ao Quiz de Conhecimentos Gerais! Este é um projeto front end desenvol
 - **Tempo Médio por Questão**: O tempo médio que você levou para responder cada pergunta.
 
 ## Como Utilizar
-
+É possivel acessar pelo site https://pablobezerra.github.io/Quiz_Conhecimentos_Gerais/
 Responda às perguntas selecionadas.
 Ao final, veja sua pontuação e estatísticas na tela de resultados.
 Divirta-se testando seus conhecimentos! Se tiver alguma sugestão ou encontrar algum problema, sinta-se à vontade para abrir uma issue neste repositório.
