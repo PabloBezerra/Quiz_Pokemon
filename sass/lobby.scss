@@ -1,88 +1,117 @@
+/* SCSS DE CONFIGURAÇÃO DA TELA INICIAL*/
+
 section.lobby{
     width: 90%;
     height: 0;
     background: transparent;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content:space-around;
     border-radius: 20px;
-    overflow: hidden;
-    position: absolute;
 
-    div.title{
-        width: 100%;
+    // Estilização do titulo
+    div.intro{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-        h2{
-            font-size: 20px;
-            color: $branco;
-            font-weight: 200;        
+        div.title{
+            width: 100%;
+            
+            h2{
+                font-size: 1.5em;
+                color: $branco;
+                font-weight: 200;        
+            }
+            
+            h1{
+                color: $branco;
+                font-size: 2.5em;
+                text-transform: uppercase;
+            }
+        }
+
+        // Estilização da imagem central
+        img{
+            width: 200px;
         }
         
-        h1{
+        // Estilização do sub título
+        h3{
             color: $branco;
-            font-size: 35px;
-            text-transform: uppercase;
+            font-size: 1.5em;
+            text-align: center;
+            font-weight: lighter;
         }
     }
-
-    img{
-        width: 200px;
-    }
-
-    h3{
-        color: $branco;
-        font-size: 25px;
-        text-align: center;
-        font-weight: lighter;
-    }
-
+    
+    // Estilização do formulario de cadastro do nome
     form.formNickname{
         width: 100%;
-        height: 100px;
+        height: auto;
         display: flex;
         flex-basis: 30%;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
 
-        input[type='text']{
-            width: 250px;
-            height: 40px;
-            color: $Terciario;
-            border: none;
-            border-radius: 10px;
-            padding: 5px;
-            font-size: 20px;
-            font-weight: 500;
-            text-align: center;
-            background-color: $branco;
-        }
+        // Estilização do campo de texto
+        div.player{
 
-        p{
-            font-size: 20px;
-            color: $branco;
-        }
-
-        input[type='range']{
-            appearance: none;
-            margin-top: 10px;
-            justify-self: center;
-            background-color: $Terciario;
-            border-radius: 10px;
-            margin-right: 10px;
-
-            &::-webkit-slider-thumb{
+            input[type='text']{
+                width: 250px;
+                height: 40px;
+                color: $Terciario;
+                border: none;
+                border-radius: 10px;
+                padding: 5px;
+                font-size: 1.6em;
+                font-weight: 500;
+                text-align: center;
                 background-color: $branco;
+            }
+
+            p{
+                font-size: 1.3em;
+                color: $branco;
+                text-align: left;
             }
         }
 
-        label{
-            color: $branco;
-            font-size: 25px;
+        // Estilização do campo de seleção de quantidade de questões
+        div.qntDeQuestoes{
+            width: 250px;
+            display: flex;
+            flex-wrap: wrap;
+
+            input[type='range']{
+                flex-basis: 100%;
+                appearance: none;
+                height: 15px;
+                justify-self: center;
+                background-color: $Terciario;
+                border-radius: 10px;
+                
+                &::-webkit-slider-thumb{
+                    height: 100%;
+                    color: $branco;
+                }
+            }
+            
+            p{
+                font-size: 1.3em;
+                color: $branco;
+                text-align: left;
+                margin-top: 10px;
+
+                &.range{
+                    margin-left: 10px;
+                }
+            }
         }
 
+        // Estilização do botão de start do game
         input[type='submit']{
             width: 250px;
             height: 40px;
@@ -90,7 +119,8 @@ section.lobby{
             color: $branco;
             border: 1px solid $branco;
             border-radius: 10px;
-            font-size: 20px;
+            margin-top: 10px;
+            font-size: 1.6em;
 
             &:hover{
                 background: $branco;
@@ -98,4 +128,80 @@ section.lobby{
             }
         }
     }
+
+    @include noMobile{
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        div.intro{
+            height: 100%;
+            width: auto;
+            flex-basis: 100%;
+            justify-content: space-around;
+            align-items: center;
+
+            div.title{
+                width: 100%;
+
+                h2{
+                    font-size: 2em;
+                }
+
+                h1{
+                    font-size: 2.8em;
+                }
+            }
+            
+            img{
+                width: 350px;
+            }
+            
+            h3{ 
+                font-size: 30px;
+            }
+        }
+
+        form.formNickname{
+            width: 50%;
+            flex-basis: 100%;
+            align-items: center;
+            justify-content: center;
+
+            div.player{
+                width: 80%;
+                margin: 20px 0px;
+                
+                input[type='text']{
+                    width: 100%;
+                    height: 50px;
+                }
+                
+                p{
+                    font-size: 1.5em;
+                }
+            }
+            
+            div.qntDeQuestoes{
+                width: 80%;
+                margin: 20px 0px;
+                
+                input[type='range']{
+                    width: 89%;
+                    height: 20px;
+                    align-self: center;
+                }
+                
+                p{
+                    font-size: 1.5em;
+                }
+            }
+            
+            input[type='submit']{
+                margin: 40px 0px;
+                width: 80%;
+                height: 50px;
+            }
+        }
+    }
+
 }

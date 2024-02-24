@@ -1,20 +1,23 @@
-// IMPORTS
+/* SCSS CENTRAL E CONFIGURAÇÕES QUE PERMANECEM NA TELA */
 
+// Importações
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
-//VARIABLES
-
+//Variaveis
 $font:'Oswald', arial, sans-serif;
 $Primario: #202124;
 $Secundario: #4B4F52;
 $branco:#EEE2DE;
-
 $Terciario : #8d1414;
-//$Terciario: #0d5e12;
-//$Terciario : #C641FA;
-//$Terciario : #41AAFA;
 
-//RESET GENERAL
+// Mixins
+@mixin noMobile{
+    @media screen and (min-width:900px) {
+        @content;
+    }
+}
+
+// Reset Geral
 *{
     padding: 0;
     margin: 0;
@@ -23,6 +26,7 @@ $Terciario : #8d1414;
     transition: all ease-in-out .5s;
 }
 
+// Estilizações do corpo da página
 body{
     width: 100vw;
     min-width: 320px;
@@ -33,23 +37,9 @@ body{
 
     &::-webkit-scrollbar{display: none;}
     &::-webkit-scrollbar-thumb{display: none;}
-
-    // &::before{
-    //     content: '';
-    //     position: absolute;
-    //     left:calc(100vw - 200px);
-    //     top:calc(100vh - 200px);
-    //     display: block;
-    //     width: 300px;
-    //     height: 300px;
-    //     background-color: transparent;
-    //     border-radius: 50%;
-    //     border: 50px solid $Secundario;
-    //     z-index: -1;
-    //     opacity: .5;
-    // }
 }
 
+// Estilização da forma de fundo 1
 div.ring1{
     display: block;
     width: 600px;
@@ -62,12 +52,32 @@ div.ring1{
     top: calc((100vh/2) - 300px);
     z-index: -1;
     opacity: .3;
+
+    @include noMobile{
+        top: - 300px;
+    }
 }
 
+// Estilização da forma de fundo 2
 div.ring2{
     display: none;
+    width: 600px;
+    height: 600px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 40px solid #8d1414;
+    position: absolute;
+    left: calc((100vw) - 300px);
+    top: calc((100vh) - 300px);
+    z-index: -1;
+    opacity: .3;
+
+    @include noMobile{
+        display: block;
+    }
 }
 
+// Estilização do conteúdo central da página
 main{
     width: 100%;
     height: 100%;
@@ -76,6 +86,7 @@ main{
     justify-content: center;
     align-items: center;
 
+    // Estilização da gaveta de seleção de cores
     div.colorDrawer{
         position: absolute;
         display: flex;
@@ -138,5 +149,5 @@ main{
     }   
 }
 
-
+// Mais Importações
 @import 'results.scss', 'game.scss', 'lobby.scss', 'animacao.scss';

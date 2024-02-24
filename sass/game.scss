@@ -1,3 +1,5 @@
+/* SCSS DE CONFIGURAÇÃO DA TELA DO JOGO*/
+
 section.game{
     width: 100%;
     height: 90%;
@@ -6,6 +8,7 @@ section.game{
     flex-direction: column;
     justify-content: space-evenly;
 
+    // Estilização do campo de imformações do jogador
     div.info{
         width: 100%;
         display: flex;
@@ -17,9 +20,10 @@ section.game{
 
         div{
             display: flex;
-            
+
             span{
                 font-size: 20px;
+                margin-top: 6px;
             }
 
             .timer{
@@ -36,6 +40,7 @@ section.game{
         }
     }
     
+    // Estilização do campo de Pergunta da questão
     div.screen{
         height: 250px;
         width: 90%;
@@ -61,6 +66,7 @@ section.game{
 
     }
 
+    // Estilização da barra de progresso do jogo
     div.barra{
         width: 90%;
         margin: auto;
@@ -80,6 +86,7 @@ section.game{
         }
     }
 
+    // Estilização das alternativas da questão
     div.questoes{
         width: 90%;
         height: 250px;
@@ -131,6 +138,7 @@ section.game{
             }
         }
 
+        // Estilização das letras das alternativas que tambem funciona como cortina
         div.spans{
             width: auto;
             height: 100%;
@@ -153,6 +161,7 @@ section.game{
         }
     }
 
+    // Estilização do botão que verifica e passa pra proxima questão
     button.verificador{
         width: 90%;
         height: 50px;
@@ -172,6 +181,76 @@ section.game{
             background-color: transparent;
             border: 1px solid $branco;
             opacity: .5;
+        }
+    }
+
+    @include noMobile{
+        flex-wrap: wrap;
+        padding: 5px;
+        justify-content: center;
+
+        div.info{
+            width: 50%;
+            padding: 0;
+            margin: 0px 20px 0px 20px;
+        }
+        
+        div.screen{
+            width: 50%;
+            flex-basis: 75%;
+            margin: 0 20px;
+
+            p.titulo{
+                font-size: 1.5em;
+            }
+
+            p.pergunta{
+                font-size: 2.2em;
+            }
+        }
+        
+        div.barra{
+            width: 50%;
+            height: 20px;
+            margin: 0 20px;
+        }
+
+        div.questoes{
+            width: 40%;
+            flex-basis: 78%;
+            margin: 0 20px;
+            
+            div.buttons{
+                padding-bottom: 50px;
+                justify-content: center;
+                
+                button{
+                    height: 60px;
+                    margin: 20px 0;
+                    border-radius: 5px;
+                    font-size: 1.8em;
+                    padding-left: 40px;
+                }
+            }
+            
+            div.spans{
+                padding-bottom: 50px;
+                justify-content: center;
+                
+                span{
+                    width: 50px;
+                    height: 50px;
+                    margin: 25px 0;
+                    font-size: 1.8em;
+                    
+                }
+            }
+        }
+
+        button.verificador{
+            width: 40%;
+            height: 70px;
+            margin: 0 20px;
         }
     }
 }

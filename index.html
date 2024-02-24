@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!-- Links e Configurações da Páginas -->
     <meta charset="UTF-8">
+    <meta name="description" content="Jogo Quiz de Conhecimentos Gerais">
+    <meta name="author" content="Pablo Bezerra">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Conhecimentos Gerais</title>
+    <link rel="shortcut icon" href="/images/icons8-cérebro-16.png" type="image/x-icon">
     <link rel="stylesheet" href="styles/style.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script defer src="js/app.js" type="module"></script>
 </head>
+<!-- Construção do Corpo da Página -->
 <body>
+
+    <!-- Formas de Fundo -->
     <div class="ring1 borderColor"></div>
     <div class="ring2 borderColor"></div>
-
+    
     <main>
+
+        <!-- Gaveta de Seleção de Cores -->
         <div class="colorDrawer">
             <div class="colors">
                 <div class="color" color="1"></div>
@@ -24,15 +33,20 @@
             <span class="material-symbols-outlined"> chevron_left </span>
         </div>
 
+        <!-- Tela de Inicio do jogo -->
         <section class="lobby">
 
-            <div class="title">
-                <h2>Seja Bem Vindo(a) ao Quiz</h2>
-                <h1>Conhecimentos Gerais</h1>
+            <!-- Titulo e Informações iniciais do jogo -->
+            <div class="intro">
+                <div class="title">
+                    <h2>Seja Bem Vindo(a) ao Quiz</h2>
+                    <h1>Conhecimentos Gerais</h1>
+                </div>
+                <img src="./images/cerebro-1.png" alt="Imagem Cérebro">
+                <h3>Onde o seu conhecimento seu é posto a prova!</h3>
             </div>
-            <img src="./images/cerebro-1.png" alt="Imagem Cérebro">
-            <h3>Onde o seu conhecimento seu é posto a prova!</h3>
 
+            <!-- Form de cadastro de Jogador e quantidade de questões -->
             <form class="formNickname">
 
                 <div class="player">
@@ -42,9 +56,9 @@
                 </div>
 
                 <div class="qntDeQuestoes">
-                    <p>Quantidade de Questões</p>
+                    <p>Quantidade de Questões:</p>
+                    <p class="range">10</p>
                     <input class="bgColor" type="range" name="range" id="idRange" min="10" max="50" step="10" value="10">
-                    <label for="range">10</label>
                 </div>
 
                 <input type="submit" value="Começar!"> 
@@ -52,8 +66,11 @@
             </form>
 
         </section>
+
+        <!-- Tela de jogo -->
         <section class="game">
 
+            <!-- Trecho de informações de pontos e tempo -->
             <div class="info">
                 <div>
                     <span class="material-symbols-outlined">timer</span>    
@@ -63,6 +80,7 @@
                 <p class="pontuacao">10 Pontos</p>
             </div>
 
+            <!-- Trecho da pergunta da questão -->
             <div class="screen">
 
                 <p class="titulo"></p>
@@ -73,6 +91,7 @@
 
             <div class="barra"><span class="bgColor"></span></div>
             
+            <!-- Trecho das opções de resposta -->
             <div class="questoes">
                 <div class="buttons">
                     <button opcao="1"></button>
@@ -91,7 +110,10 @@
             <button class="verificador bgColor" disabled >Verificar</button>
 
         </section>
+
+        <!-- Tela de resultados -->
         <section class="result">
+            <!-- Informações do Jogo realizado -->
             <h2 class="color">Resultados</h2>
             <div class="infoFinal bgColor">
                 <p class="ponto"><i>08</i></p>
@@ -111,4 +133,5 @@
         </section>
     </main>
 </body>
+<!-- Fim do Corpo da Página -->
 </html>

@@ -1,7 +1,9 @@
+// Importações
 import { Server } from "./Server.js"
 import { View } from "./View.js"
 import { Controller } from "./Controller.js"
 
+// Variaveis
 const lobby = document.querySelector('.lobby')
 const game = document.querySelector('.game')
 const btnVerificador = document.querySelector('.verificador')
@@ -12,25 +14,30 @@ const info = document.querySelector('.info')
 const drawer = document.querySelector('.colorDrawer')
 const results = document.querySelector('.result')
 
+// Instâncias
 export const view = new View(questoes, screen, barra.firstElementChild, info, btnVerificador, lobby, results )
 export const server = new Server()
 export const controller = new Controller()
 
+// Evento ao carregar a página
 window.addEventListener('load',()=>{
     lobby.style.height = '95%'
 })
 
+// Evento ao Modificar a quantidade de questões
 document.querySelector('#idRange').addEventListener('input',function(event){
-    this.nextElementSibling.innerText = event.target.value
+    this.previousElementSibling.innerText = event.target.value
 })
 
+// Evento ao enviar ao enviar o formulário
 document.querySelector('.formNickname').addEventListener('submit',function(event){
     event.preventDefault()
     view.animacoes('exit', lobby)
-    controller.start(this.querySelector('[type="text"]'),+this.querySelector('label').innerText)
+    controller.start(this.querySelector('[type="text"]'), + this.querySelector('.range').innerText)
     view.animacoes('entrar', game)
 })
 
+// Evento ao clicar e selecionar as alternativas das questões
 questoes.addEventListener('click', function (event){
     if (event.target.tagName === 'BUTTON'){
         view.btnVerificador('Verificar', false)
@@ -39,16 +46,16 @@ questoes.addEventListener('click', function (event){
     }
 })
 
+// Evento ao clicar no botão de verificar a alternativa e proxima questão
 btnVerificador.addEventListener('click',function(){
     if(this.innerText === 'Verificar'){
         controller.analiseQuestao(questoes.querySelector('.selecionado'))
-        questoes.nextElementSibling.style.width = '100%'
         return
     }
     controller.next(game, results)
-    questoes.nextElementSibling.style.width = 'auto'
 })
 
+// Evento ao clicar no botão de ativação da gaveta de cores
 drawer.addEventListener('click', (event)=>{
     if(event.target.tagName === 'SPAN'){
         controller.changeColor(event.target, drawer)
@@ -60,6 +67,7 @@ drawer.addEventListener('click', (event)=>{
     }
 })
 
+// Evento ao clicar no botão de reset do jogo
 results.querySelector('button').addEventListener('click',()=>{
     controller.reset(results, lobby)
 })

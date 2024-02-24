@@ -1,5 +1,7 @@
+// Importações
 import { view, server } from "./app.js"
 
+// Classe Controladora
 export class Controller{
     constructor(){
         this.ordem = [1, 2, 3, 4]
@@ -12,41 +14,46 @@ export class Controller{
         this.questaoAtual = {}
     }
 
+    // Método que inicializa o jogo
     async start(nome, maxCont){
         await server.separaQuestoes(maxCont)
         this.maxCont = maxCont
-        this.nomeJogador(nome)
+        this.jogador = nome.value
+        view.nome(this.jogador)
         this.updateTime()
         this.getQuestao()
         this.updatePontuacao()
     }
 
+    // Método que passa para a próxima questão
     next(game, results){
         if(this.cont === this.maxCont){
-            const resumo = {
-                jogador: this.jogador,
-                tempo: `${this.min < 10 ? '0'+ this.min: this.min}: ${this.sec}`,
-                pontos: `${this.pontuacao < 10 ? '0' + this.pontuacao : this.pontuacao}`,
-                questoes: this.maxCont,
-                porcentagem: (this.pontuacao * 100 )/this.maxCont,
-                mediaTempo: ((this.min * 60) + this.sec ) /this.maxCont,
-            }
-            view.animacoes('exit',game)
-            view.resultados(resumo)
-            this.updateTime(true)
-            view.animacoes('entrar', results)
-            return
+            this.end(game, results)
         }
         view.resetBotoes()
         this.getQuestao()
         view.btnVerificador('Verificar', true)
+        view.cortina(false)
     }
 
-    nomeJogador(nome){
-        this.jogador = nome.value
-        view.nome(nome)
+    // Método que finaliza o jogo e chama a tela de resultados
+    end(game, results){
+        const resumo = {
+            jogador: this.jogador,
+            tempo: `${this.min < 10 ? '0'+ this.min: this.min}: ${this.sec}`,
+            pontos: `${this.pontuacao < 10 ? '0' + this.pontuacao : this.pontuacao}`,
+            questoes: this.maxCont,
+            porcentagem: (this.pontuacao * 100 )/this.maxCont,
+            mediaTempo: ((this.min * 60) + this.sec ) /this.maxCont,
+        }
+        view.animacoes('exit',game)
+        view.resultados(resumo)
+        this.updateTime(true)
+        view.animacoes('entrar', results)
+        return
     }
 
+    // Método que recupera uma questão do server e manda contruir na tela
     getQuestao(){
         this.cont++
         this.questaoAtual = server.selecionaQuestao()
@@ -54,6 +61,7 @@ export class Controller{
         view.construirQuestao(this.ordem, this.cont, this.questaoAtual, this.maxCont)
     }
 
+    // Método que analiza a questão 
     analiseQuestao(selecionado){
         const correto = this.questaoAtual.correto
         if(selecionado.getAttribute('opcao') === correto){
@@ -64,12 +72,15 @@ export class Controller{
             view.mark(selecionado, 'errado')
         }
         view.btnVerificador(this.cont === this.maxCont ? 'Finalizar':'Próxima questão', false)
+        view.cortina(true)
     }
 
+    // Método genérico que reorganiza uma array
     reorganizaArray(array) {
         return array.sort(() => Math.random() - 0.5);
     }
 
+    // Método responsável pela contágem do tempo
     time(){
         this.sec += 1
         if(this.sec >= 60){
@@ -78,7 +89,8 @@ export class Controller{
         }
         view.insertTime(this.min, this.sec)
     }
-    
+
+    // Método responsável pela atualização do tempo
     updateTime(end=false){
         if(!end){
             setInterval(()=>{this.time()}, 1000)
@@ -87,11 +99,13 @@ export class Controller{
         }
     }
 
+    // Método que atualiza a pontuação caso o usuário acerte
     updatePontuacao(plus=false){
         plus ? this.pontuacao++ : this.pontuacao
         view.insertPontuacao(this.pontuacao)
     }
 
+    // Método que muda a cor conforme a cor que o usuário deseje
     changeColor(event, drawer){
         if(event.tagName === 'SPAN'){
             if(drawer.classList.contains('activated')){
@@ -110,7 +124,7 @@ export class Controller{
         }
     }
 
-    // Convertendo cada parte do RGB para hexadecimal e formatando
+    // Método que converte cada parte do RGB para hexadecimal e formatando
     rgbToHex(rgb) {
         if (/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/.test(rgb)) {
             const partes = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
@@ -126,6 +140,7 @@ export class Controller{
         }
     }
 
+    // Método que reseta todas as configurações necessárias para um novo jogo
     reset(results, lobby){
         this.cont = 0
         this.maxCont = null
