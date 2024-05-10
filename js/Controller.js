@@ -15,8 +15,8 @@ export class Controller{
     }
 
     // Método que inicializa o jogo
-    async start(nome, maxCont){
-        await server.separaQuestoes(maxCont)
+    start(nome, maxCont){
+        server.separaQuestoes(maxCont)
         this.maxCont = maxCont
         this.jogador = nome.value
         view.nome(this.jogador)

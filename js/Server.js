@@ -1,21 +1,17 @@
+// Importações
+import { allQuests } from "../questoes.js";
+
 // Classe de Serviço
 export class Server{
     constructor(){
-        this.url = './questoes.json'
+        this.base = allQuests
         this.questoesSelecionadas = []
     }
 
-    // Método que faz o requerimento Json e separa uma quantidade de questões
-    async separaQuestoes(qnt){
-        let quests = null
-        try {
-            const response = await fetch(this.url);
-            quests = await response.json()
-        } catch (error) {
-            console.log(error);
-        }
+    // Método que separa uma quantidade de questões
+    separaQuestoes(qnt){ 
         while (this.questoesSelecionadas.length < qnt){
-            const questao = this.sortearQuestao(quests)
+            const questao = this.sortearQuestao(this.base)
             if(questao !== undefined && !this.questoesSelecionadas.includes(questao) ){
                 this.questoesSelecionadas.push(questao)
             }

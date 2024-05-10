@@ -1,4 +1,4 @@
-[
+export const allQuests = [
     {
         "questao": "Como se chama a palava no qual a sua escrita da direita para a esquerda e da esquerda para direita é a mesma coisa? Ex.: 'ovo', 'arara' 'esse'",
         "1": "Palíndromo",
