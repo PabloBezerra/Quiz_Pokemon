@@ -1,5 +1,5 @@
 // Importações
-import { allQuests } from "../questoes.js";
+import { allQuests } from "./questoes.js";
 
 // Classe de Serviço
 export class Server{
