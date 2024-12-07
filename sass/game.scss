@@ -8,7 +8,39 @@ section.game{
     flex-direction: column;
     justify-content: space-evenly;
 
-    // Estilização do campo de imformações do jogador
+    // Estilização do menu de pause
+    div.pause{
+        #pause{
+            display: block;
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            top: 110px;
+            left: calc(100% - 50px);
+            color: white;
+        }
+        #pausado{
+            display: none;
+            width: 300px;
+            height: 100px;
+            
+        }
+        #confirm{
+            display: none;
+        }
+        &.pausado{
+            #pause{display: none;}
+            #pausado{display: block;}
+            #confirm{display: none;}
+        }
+        &.confirm{
+            #pause{display: none;}
+            #pausado{display: none;}
+            #confirm{display: block;}
+        }
+    }
+
+    // Estilização do campo de informações do jogador
     div.info{
         width: 100%;
         display: flex;

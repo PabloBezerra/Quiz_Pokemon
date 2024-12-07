@@ -140,6 +140,11 @@ export class Controller{
         }
     }
 
+    // Metodo que encerra o jogo antes de finalizar
+    exit(){
+        
+    }
+
     // Método que reseta todas as configurações necessárias para um novo jogo
     reset(results, lobby){
         this.cont = 0

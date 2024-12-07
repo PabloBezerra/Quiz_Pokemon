@@ -13,6 +13,7 @@ const questoes = document.querySelector('.buttons')
 const info = document.querySelector('.info')
 const drawer = document.querySelector('.colorDrawer')
 const results = document.querySelector('.result')
+const config = document.querySelector('.config')
 
 // Instâncias
 export const view = new View(questoes, screen, barra.firstElementChild, info, btnVerificador, lobby, results )
@@ -36,6 +37,11 @@ document.querySelector('.formNickname').addEventListener('submit',function(event
     controller.start(this.querySelector('[type="text"]'), + this.querySelector('.range').innerText)
     view.animacoes('entrar', game)
 })
+
+// Evento ao clicar na opção home
+// home.addEventListener('click', function(){
+//     controller.exit
+// })
 
 // Evento ao clicar e selecionar as alternativas das questões
 questoes.addEventListener('click', function (event){

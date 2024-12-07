@@ -607,5 +607,13 @@ export const allQuests = [
         "3": "Terceira Lei de Newton",
         "4": "Lei da Inércia",
         "correto":"4"
+    },
+    {
+        "questao": "Qual desses nomes é nome do produto e não a marca",
+        "1": "Isopor",
+        "2": "Jet Ski",
+        "3": "Cotonete",
+        "4": "Iogurte",
+        "correto":"4"
     }
 ]
