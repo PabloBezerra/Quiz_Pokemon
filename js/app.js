@@ -23,6 +23,7 @@ export const controller = new Controller()
 // Evento ao carregar a página
 window.addEventListener('load',()=>{
     lobby.style.height = '95%'
+    
 })
 
 // Evento ao Modificar a quantidade de questões
@@ -38,10 +39,10 @@ document.querySelector('.formNickname').addEventListener('submit',function(event
     view.animacoes('entrar', game)
 })
 
-// Evento ao clicar na opção home
-// home.addEventListener('click', function(){
-//     controller.exit
-// })
+//Evento ao clicar na opção home
+config.addEventListener('click', function(event){
+    controller.pause(event.target)
+})
 
 // Evento ao clicar e selecionar as alternativas das questões
 questoes.addEventListener('click', function (event){
@@ -65,9 +66,9 @@ btnVerificador.addEventListener('click',function(){
 drawer.addEventListener('click', (event)=>{
     if(event.target.tagName === 'SPAN'){
         controller.changeColor(event.target, drawer)
-        
     }else if(event.target.classList.contains('color')){
         controller.changeColor(event.target, drawer)
+        console.log(event.target, drawer)
     }else{
         drawer.classList.remove('activated')
     }

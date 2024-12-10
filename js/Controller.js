@@ -95,7 +95,7 @@ export class Controller{
         if(!end){
             setInterval(()=>{this.time()}, 1000)
         }else{
-            clearInterval(this.time)
+            clearInterval(this.updateTime)
         }
     }
 
@@ -105,12 +105,12 @@ export class Controller{
         view.insertPontuacao(this.pontuacao)
     }
 
-    // Método que muda a cor conforme a cor que o usuário deseje
+    // Método que muda a cor conforme a cor que o usuário deseja
     changeColor(event, drawer){
         if(event.tagName === 'SPAN'){
             if(drawer.classList.contains('activated')){
                 view.mark(drawer, 'activated', true)
-                view.rodarElemento(drawer.lastElementChild, -90)
+                view.rodarElemento(drawer.lastElementChild, -90) 
                 return
             }
             view.mark(drawer, 'activated')
@@ -141,8 +141,34 @@ export class Controller{
     }
 
     // Metodo que encerra o jogo antes de finalizar
-    exit(){
-        
+    pause(event){
+        const dom = event.parentElement.parentElement
+        const opcoes = {
+            i_pause:()=>{
+                view.mark(dom, 'pausado')
+                this.updateTime(false)
+            },
+            i_continue:()=>{
+                view.mark(dom, 'pausado',true)
+                this.updateTime()
+            },
+            i_back:()=>{
+                view.mark(dom, 'pausado',true)
+                view.mark(dom, 'confirm')
+            },
+            i_exit:()=>{
+                view.mark(dom, 'confirm', true)
+                this.reset(dom.parentElement, dom.parentElement.previousElementSibling)
+                return
+            },
+            i_cancel:()=>{
+                view.mark(dom, 'confirm', true)
+                view.mark(dom, 'pausado')
+            }
+        }
+        if(opcoes[event.id]){
+            opcoes[event.id]()
+        }
     }
 
     // Método que reseta todas as configurações necessárias para um novo jogo

@@ -2,42 +2,50 @@
 
 section.game{
     width: 100%;
-    height: 90%;
+    height: 95%;
     border-radius: 10px;
     display: none;
     flex-direction: column;
     justify-content: space-evenly;
 
     // Estilização do menu de pause
-    div.pause{
+    div.config{
+        //display: none;
+        z-index: 900;
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        top: 110px;
+        left: calc(100% - 50px);
+        cursor: pointer;
+
         #pause{
             display: block;
-            width: 25px;
-            height: 25px;
-            position: absolute;
-            top: 110px;
-            left: calc(100% - 50px);
             color: white;
         }
-        #pausado{
-            display: none;
-            width: 300px;
-            height: 100px;
-            
-        }
-        #confirm{
-            display: none;
-        }
+        #pausado{display: none;}
+        #confirm{display: none;}
+
         &.pausado{
+            @extend %cortina;
             #pause{display: none;}
-            #pausado{display: block;}
+            #pausado{
+                @extend %botoes;
+                p{font-size: 40px;}
+            }
             #confirm{display: none;}
         }
+
         &.confirm{
+            @extend %cortina;
             #pause{display: none;}
             #pausado{display: none;}
-            #confirm{display: block;}
+            #confirm{
+                @extend %botoes;
+                p{font-size: 28px;}
+            }
         }
+        
     }
 
     // Estilização do campo de informações do jogador
@@ -57,19 +65,11 @@ section.game{
                 font-size: 20px;
                 margin-top: 6px;
             }
-
-            .timer{
-                font-size: 20px;
-            }
+            .timer{font-size: 20px;}
         }
             
-        p.jogador{
-            font-size: 30px;
-        }
-
-        p.pontuacao{
-            font-size: 20px;
-        }
+        p.jogador{font-size: 30px;}
+        p.pontuacao{font-size: 20px;}
     }
     
     // Estilização do campo de Pergunta da questão
@@ -159,13 +159,13 @@ section.game{
                 &.correto{
                     background-color: darkgreen;
                     color: $branco;
-                box-shadow: 0px 0px 10px $branco;
+                    box-shadow: 0px 0px 10px $branco;
                 }
             
                 &.errado{
-                background-color: darkred;
-                color: $branco;
-                box-shadow: 0px 0px 10px $branco;
+                    background-color: darkred;
+                    color: $branco;
+                    box-shadow: 0px 0px 10px $branco;
                 }
             }
         }
@@ -221,6 +221,10 @@ section.game{
         padding: 5px;
         justify-content: center;
 
+        div.config{
+            top: 35px;
+            left: calc(94%);
+        }
         div.info{
             width: 50%;
             padding: 0;
@@ -232,13 +236,8 @@ section.game{
             flex-basis: 75%;
             margin: 0 20px;
 
-            p.titulo{
-                font-size: 1.5em;
-            }
-
-            p.pergunta{
-                font-size: 2.2em;
-            }
+            p.titulo{font-size: 1.5em;}
+            p.pergunta{font-size: 2.2em;}
         }
         
         div.barra{
@@ -283,5 +282,46 @@ section.game{
             height: 70px;
             margin: 0 20px;
         }
+    }
+}
+
+%cortina{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: $Primario;
+    filter: opacity(.994);
+}
+
+%botoes{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 300px;
+    height: 150px;
+    background-color: $Secundario;
+    border-radius: 10px;
+
+    P{
+        color: $branco;
+        flex-basis: 100%;
+        text-align: center;
+    }
+
+    Button{
+        height: 30px;
+        flex-basis: 47%;
+        border-radius: 5px;
+        border: none;
+        background-color: $branco;
+        color: $branco;
+        box-shadow: 10px, 5px, 5px black;
+        cursor: pointer;
     }
 }
