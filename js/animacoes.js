@@ -21,3 +21,11 @@ export function esmaecer(element,reverso=false){
         element.style.opacity = `${reverso? '0': '1'} `
     }, 500)
 }
+
+// Função de animação de balançar o elemento
+export function shake(element){
+    element.style.animation = 'shake .8s'
+    // setTimeout(()=>{
+    //     element.style.display = flex
+    // }, 800)
+}

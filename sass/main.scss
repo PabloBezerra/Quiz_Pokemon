@@ -102,13 +102,15 @@ main{
         z-index: 999;
 
         &.activated{
-            top: 10px
+            top: 10px;
+            span{
+                transform: rotate(180deg);
+            }
         }
 
         span{
             height: 100%;
             cursor: pointer;
-            transform: rotate(-90deg);
         }
 
         div.colors{

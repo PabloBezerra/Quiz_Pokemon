@@ -1,5 +1,5 @@
 // Importações
-import { exit, entrar, esmaecer } from "./animacoes.js"
+import { exit, entrar, esmaecer, shake } from "./animacoes.js"
 
 // Classe de Visualização
 export class View{
@@ -54,11 +54,6 @@ export class View{
         dom.classList.add(`${marcado}`)
     }
 
-    // Método que adiciona o efeito de rotação em um elemento
-    rodarElemento(dom, qnt){
-        dom.style.transform = `rotate(${qnt}deg)`
-    }
-
     // Método que trata do estado do botão verificador de questão
     btnVerificador(txt, disabled=false){
         this.domButton.innerText = `${txt}`
@@ -103,6 +98,9 @@ export class View{
             },
             esmaecer:(dom)=>{
                 esmaecer(dom)
+            },
+            shake:(dom)=>{
+                shake(dom)
             }
         }
         if(opcoes[animacao]){

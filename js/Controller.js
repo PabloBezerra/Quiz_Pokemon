@@ -42,7 +42,7 @@ export class Controller{
     end(game, results){
         const resumo = {
             jogador: this.jogador,
-            tempo: `${this.min < 10 ? '0'+ this.min: this.min}: ${this.sec}`,
+            tempo: `${this.min < 10 ? '0'+ this.min: this.min}: ${this.sec < 10 ? '0' +this.sec : this.sec}`,
             pontos: `${this.pontuacao < 10 ? '0' + this.pontuacao : this.pontuacao}`,
             questoes: this.maxCont,
             porcentagem: (this.pontuacao * 100 )/this.maxCont,
@@ -73,7 +73,12 @@ export class Controller{
             view.mark(selecionado.parentElement.querySelector(`[opcao="${correto}"]`), 'correto')
             view.mark(selecionado, 'errado')
         }
-        view.btnVerificador(this.cont === this.maxCont ? 'Finalizar':'Próxima questão', false)
+        if(this.cont === this.maxCont){
+            view.btnVerificador('finalizar')
+            this.updateTime(true)
+        }else{
+            view.btnVerificador('Próxima questão', false)
+        }
         view.cortina(true)
     }
 
@@ -108,21 +113,18 @@ export class Controller{
     }
 
     // Método que muda a cor conforme a cor que o usuário deseja
-    changeColor(event, drawer){
+    changeColor(event, drawer, rotate=true){
         if(event.tagName === 'SPAN'){
             if(drawer.classList.contains('activated')){
-                view.mark(drawer, 'activated', true)
-                view.rodarElemento(drawer.lastElementChild, -90) 
+                view.mark(drawer, 'activated', true) 
                 return
             }
             view.mark(drawer, 'activated')
-            view.rodarElemento(drawer.lastElementChild, 90)
         }else if(event.classList.contains('color')){
             const color = window.getComputedStyle(event).backgroundColor
             const num = event.getAttribute('color')
             view.changeColor(this.rgbToHex(color), num)
             view.mark(drawer, 'activated', true)
-            view.rodarElemento(drawer.lastElementChild, -90)
         }
     }
 

@@ -23,7 +23,8 @@ export const controller = new Controller()
 // Evento ao carregar a página
 window.addEventListener('load',()=>{
     lobby.style.height = '95%'
-    controller.changeColor(server.sortearQuestao(drawer.querySelectorAll('.color')), drawer)
+    controller.changeColor(server.sortearQuestao(drawer.querySelectorAll('.color')), drawer,false)
+    view.animacoes('shake',drawer.querySelector('span'))          
 })
 
 // Evento ao Modificar a quantidade de questões
