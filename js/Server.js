@@ -11,6 +11,7 @@ export class Server{
     // Método que separa uma quantidade de questões
     separaQuestoes(qnt){ 
         while (this.questoesSelecionadas.length < qnt){
+            console.log(this.base.length)
             const questao = this.sortearQuestao(this.base)
             if(questao !== undefined && !this.questoesSelecionadas.includes(questao) ){
                 this.questoesSelecionadas.push(questao)
@@ -31,12 +32,3 @@ export class Server{
         return array[questaoSorteada]
     } 
 }
-
-/*{
-    "questao": "",
-    "1": "",
-    "2": "",
-    "3": "",
-    "4": "",
-    "correto":""
-}*/

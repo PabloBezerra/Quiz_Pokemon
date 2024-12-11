@@ -117,6 +117,6 @@ export class View{
         this.domResult.querySelector('.tempo').innerHTML = resumo.tempo
         this.domResult.querySelector('.qntDeQuestoes').innerHTML = `${resumo.questoes} Questões`
         this.domResult.querySelector('.porcDeAcerto').innerHTML = `${resumo.porcentagem}%`
-        this.domResult.querySelector('.mediaTempo').innerHTML = `${resumo.mediaTempo} segundos`
+        this.domResult.querySelector('.mediaTempo').innerHTML = `${resumo.mediaTempo.toFixed(1)} segundos`
     }
 }

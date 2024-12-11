@@ -615,5 +615,101 @@ export const allQuests = [
         "3": "Cotonete",
         "4": "Iogurte",
         "correto":"4"
-    }
+    },
+    {
+        "questao": "Qual animal é conhecido como o 'Rei da Selva'?",
+        "1": "Leão",
+        "2": "Elefante",
+        "3": "Tigre",
+        "4": "Gorila",
+        "correto": "1"
+    },
+    {
+        "questao": "Qual é o menor país do mundo em área?",
+        "1": "Mônaco",
+        "2": "Vaticano",
+        "3": "Malta",
+        "4": "San Marino",
+        "correto": "2"
+    },
+    {
+        "questao": "Qual é a língua mais falada no mundo?",
+        "1": "Inglês",
+        "2": "Espanhol",
+        "3": "Mandarim",
+        "4": "Hindi",
+        "correto": "3"
+    },
+    {
+        "questao": "Quem foi o autor de 'A Origem das Espécies'?",
+        "1": "Isaac Newton",
+        "2": "Charles Darwin",
+        "3": "Albert Einstein",
+        "4": "Stephen Hawking",
+        "correto": "2"
+    },
+    {
+        "questao": "Quantos continentes existem no planeta Terra?",
+        "1": "5",
+        "2": "6",
+        "3": "7",
+        "4": "8",
+        "correto": "3"
+    },
+    {
+        "questao": "Qual é a principal fonte de energia do planeta Terra?",
+        "1": "Água",
+        "2": "Sol",
+        "3": "Vento",
+        "4": "Fóssil",
+        "correto": "2"
+    },
+    {
+        "questao": "Qual país sediou as Olimpíadas de 2016?",
+        "1": "China",
+        "2": "Brasil",
+        "3": "Reino Unido",
+        "4": "Rússia",
+        "correto": "2"
+    },
+    {
+        "questao": "Quantos segundos há em uma hora?",
+        "1": "3.600",
+        "2": "3.000",
+        "3": "3.200",
+        "4": "3.500",
+        "correto": "1"
+    },
+    {
+        "questao": "Qual animal é símbolo da paz?",
+        "1": "Águia",
+        "2": "Leão",
+        "3": "Pomba",
+        "4": "Golfinho",
+        "correto": "3"
+    },
+    {
+        "questao": "Quem pintou o teto da Capela Sistina?",
+        "1": "Leonardo da Vinci",
+        "2": "Rafael",
+        "3": "Michelangelo",
+        "4": "Donatello",
+        "correto": "3"
+    },
+    {
+        "questao": "Qual país é conhecido como a terra do sol nascente?",
+        "1": "China",
+        "2": "Japão",
+        "3": "Coreia do Sul",
+        "4": "Tailândia",
+        "correto": "2"
+    },
+    {
+        "questao": "Quem é conhecido como o 'pai da computação'?",
+        "1": "Charles Babbage",
+        "2": "Alan Turing",
+        "3": "John von Neumann",
+        "4": "Steve Jobs",
+        "correto": "1"
+    },
 ]

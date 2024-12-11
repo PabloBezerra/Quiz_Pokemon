@@ -23,7 +23,7 @@ export const controller = new Controller()
 // Evento ao carregar a página
 window.addEventListener('load',()=>{
     lobby.style.height = '95%'
-    
+    controller.changeColor(server.sortearQuestao(drawer.querySelectorAll('.color')), drawer)
 })
 
 // Evento ao Modificar a quantidade de questões
@@ -68,7 +68,6 @@ drawer.addEventListener('click', (event)=>{
         controller.changeColor(event.target, drawer)
     }else if(event.target.classList.contains('color')){
         controller.changeColor(event.target, drawer)
-        console.log(event.target, drawer)
     }else{
         drawer.classList.remove('activated')
     }

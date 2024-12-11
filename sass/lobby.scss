@@ -33,9 +33,7 @@ section.lobby{
         }
 
         // Estilização da imagem central
-        img{
-            width: 200px;
-        }
+        img{width: 200px;}
         
         // Estilização do sub título
         h3{
@@ -94,8 +92,11 @@ section.lobby{
                 border-radius: 10px;
                 
                 &::-webkit-slider-thumb{
-                    height: 100%;
-                    color: $branco;
+                    -webkit-appearance: none;
+                    height: 20px;
+                    width: 20px;
+                    border-radius: 50%;
+                    background-color: $branco;
                 }
             }
             
@@ -105,9 +106,7 @@ section.lobby{
                 text-align: left;
                 margin-top: 10px;
 
-                &.range{
-                    margin-left: 10px;
-                }
+                &.range{margin-left: 10px;}
             }
         }
 
@@ -143,22 +142,12 @@ section.lobby{
             div.title{
                 width: 100%;
 
-                h2{
-                    font-size: 2em;
-                }
-
-                h1{
-                    font-size: 2.8em;
-                }
+                h2{font-size: 2em;}
+                h1{font-size: 2.8em;}
             }
             
-            img{
-                width: 350px;
-            }
-            
-            h3{ 
-                font-size: 30px;
-            }
+            img{width: 350px;}
+            h3{font-size: 30px;}
         }
 
         form.formNickname{
@@ -176,9 +165,7 @@ section.lobby{
                     height: 50px;
                 }
                 
-                p{
-                    font-size: 1.5em;
-                }
+                p{font-size: 1.5em;}
             }
             
             div.qntDeQuestoes{
@@ -191,9 +178,7 @@ section.lobby{
                     align-self: center;
                 }
                 
-                p{
-                    font-size: 1.5em;
-                }
+                p{font-size: 1.5em;}
             }
             
             input[type='submit']{

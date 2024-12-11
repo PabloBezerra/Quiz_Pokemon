@@ -11,6 +11,7 @@ export class Controller{
         this.pontuacao = 0
         this.sec = 0
         this.min = 0
+        this.upTimer = null
         this.questaoAtual = {}
     }
 
@@ -29,6 +30,7 @@ export class Controller{
     next(game, results){
         if(this.cont === this.maxCont){
             this.end(game, results)
+            return
         }
         view.resetBotoes()
         this.getQuestao()
@@ -93,9 +95,9 @@ export class Controller{
     // Método responsável pela atualização do tempo
     updateTime(end=false){
         if(!end){
-            setInterval(()=>{this.time()}, 1000)
+            this.upTimer = setInterval(()=>{this.time()}, 1000)
         }else{
-            clearInterval(this.updateTime)
+            clearInterval(this.upTimer)
         }
     }
 
@@ -146,7 +148,7 @@ export class Controller{
         const opcoes = {
             i_pause:()=>{
                 view.mark(dom, 'pausado')
-                this.updateTime(false)
+                this.updateTime(true)
             },
             i_continue:()=>{
                 view.mark(dom, 'pausado',true)
