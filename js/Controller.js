@@ -9,9 +9,6 @@ export class Controller{
         this.maxCont = null
         this.jogador = null
         this.pontuacao = 0
-        this.sec = 0
-        this.min = 0
-        this.upTimer = null
         this.questaoAtual = {}
     }
 
@@ -59,7 +56,7 @@ export class Controller{
     getQuestao(){
         this.cont++
         this.questaoAtual = server.selecionaQuestao()
-        this.reorganizaArray(this.ordem)
+        server.reorganizaArray(this.ordem)
         view.construirQuestao(this.ordem, this.cont, this.questaoAtual, this.maxCont)
     }
 
@@ -82,28 +79,10 @@ export class Controller{
         view.cortina(true)
     }
 
-    // Método genérico que reorganiza uma array
-    reorganizaArray(array) {
-        return array.sort(() => Math.random() - 0.5);
-    }
-
-    // Método responsável pela contágem do tempo
-    time(){
-        this.sec += 1
-        if(this.sec >= 60){
-            this.sec = 0
-            this.min += 1
-        }
-        view.insertTime(this.min, this.sec)
-    }
-
     // Método responsável pela atualização do tempo
     updateTime(end=false){
-        if(!end){
-            this.upTimer = setInterval(()=>{this.time()}, 1000)
-        }else{
-            clearInterval(this.upTimer)
-        }
+        console.log(server.updateTimer(end))
+        view.insertTime(server.updateTimer(end))
     }
 
     // Método que atualiza a pontuação caso o usuário acerte

@@ -19,8 +19,9 @@ export class View{
     }
 
     // Método que atualiza o tempo de jogo 
-    insertTime(min,sec){
-        this.domInfo.querySelector('.timer').innerText = `${min < 10 ? '0' + min : min }:${sec < 10 ? '0' + sec : sec}`
+    insertTime(time){
+        console.log(time.sec, time.min)
+        this.domInfo.querySelector('.timer').innerText = `${time.min < 10 ? '0' + time.min : time.min }:${time.sec < 10 ? '0' + time.sec : time.sec}`
     }
 
     // Método que atualiza a pontuação

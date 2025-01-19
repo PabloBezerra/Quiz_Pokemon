@@ -23,6 +23,7 @@ export const controller = new Controller()
 // Evento ao carregar a página
 window.addEventListener('load',()=>{
     lobby.style.height = '95%'
+    server.recuperaQuestoes()
     controller.changeColor(server.sortearQuestao(drawer.querySelectorAll('.color')), drawer,false)
     view.animacoes('shake',drawer.querySelector('span'))          
 })

@@ -1,4 +1,4 @@
-export const allQuests = [
+[
     {
         "questao": "Como se chama a palava no qual a sua escrita da direita para a esquerda e da esquerda para direita é a mesma coisa? Ex.: 'ovo', 'arara' 'esse'",
         "1": "Palíndromo",
@@ -711,5 +711,5 @@ export const allQuests = [
         "3": "John von Neumann",
         "4": "Steve Jobs",
         "correto": "1"
-    },
+    }
 ]
