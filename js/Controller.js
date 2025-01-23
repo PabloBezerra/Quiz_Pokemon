@@ -81,14 +81,18 @@ export class Controller{
 
     // Método responsável pela atualização do tempo
     updateTime(end=false){
-        console.log(server.updateTimer(end))
-        view.insertTime(server.updateTimer(end))
+        if(!end){
+            this.upTimer = setInterval(()=>{
+                view.insertTime(server.time())
+            }, 1000)
+        }else{
+            clearInterval(this.upTimer)
+        }
     }
 
     // Método que atualiza a pontuação caso o usuário acerte
     updatePontuacao(plus=false){
-        plus ? this.pontuacao++ : this.pontuacao
-        view.insertPontuacao(this.pontuacao)
+        view.insertPontuacao(server.updatePontuacao(plus))
     }
 
     // Método que muda a cor conforme a cor que o usuário deseja
@@ -156,12 +160,11 @@ export class Controller{
 
     // Método que reseta todas as configurações necessárias para um novo jogo
     reset(results, lobby){
+        server.reset()
         this.cont = 0
         this.maxCont = null
         this.jogador = null
         this.pontuacao = 0
-        this.sec = 0
-        this.min = 0
         view.animacoes('exit', results)
         view.animacoes('entrar', lobby)
     }

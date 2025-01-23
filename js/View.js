@@ -20,7 +20,6 @@ export class View{
 
     // Método que atualiza o tempo de jogo 
     insertTime(time){
-        console.log(time.sec, time.min)
         this.domInfo.querySelector('.timer').innerText = `${time.min < 10 ? '0' + time.min : time.min }:${time.sec < 10 ? '0' + time.sec : time.sec}`
     }
 

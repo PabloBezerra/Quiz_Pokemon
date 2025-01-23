@@ -5,6 +5,7 @@ export class Server{
         this.questoesSelecionadas = []
         this.sec = 0
         this.min = 0
+        this.pontuacao = 0
         this.upTimer = null
     }
 
@@ -64,13 +65,15 @@ export class Server{
         return{min:this.min, sec:this.sec}
     }
 
-    // Método responsável pela atualização do tempo
-    updateTime(end){
-        if(!end){
-            this.upTimer = setInterval(()=>{this.time()}, 1000)
-        }else{
-            clearInterval(this.upTimer)
-        }
+    // Método que atualiza a pontuação caso o usuário acerte
+    updatePontuacao(plus=false){
+        plus ? this.pontuacao++ : this.pontuacao
+        return (this.pontuacao)
     }
 
+    // Método para reseter os dados do jogo
+    reset(){
+        this.sec = 0
+        this.min = 0
+    }
 }
